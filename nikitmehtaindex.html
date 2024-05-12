@@ -31,9 +31,13 @@
             min-width: 300px;
             height: auto;
             border-radius: 8px;
+            display: block; /* Ensures that the image behaves as a block element */
+            margin-left: auto; /* Centers the image horizontally within its container */
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 0;
             transition: transform 0.3s ease; /* Add transition */
         }
-
         .photo img:hover {
             transform: scale(1.1); /* Zoom in on hover */
         }
