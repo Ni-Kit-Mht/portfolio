@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .post {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-button:hover {
+            background-color: #bd2130;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="postForm">
+            <textarea id="postInput" placeholder="What's on your mind?" required></textarea>
+            <button type="submit">Post</button>
+        </form>
+        <button class="delete-button" id="deletePostsButton">Delete All Posts</button>
+        <div id="postContainer"></div>
+    </div>
+
+    <script>
+        // Function to display posts from Local Storage
+        function displayPosts() {
+            var savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+            var postContainer = document.getElementById('postContainer');
+            postContainer.innerHTML = ''; // Clear existing posts
+            savedPosts.forEach(function(post) {
+                var newPost = document.createElement('div');
+                newPost.classList.add('post');
+                newPost.textContent = post.content;
+                postContainer.appendChild(newPost);
+            });
+        }
+
+        // Load posts from Local Storage when the page loads
+        window.addEventListener('load', function() {
+            displayPosts();
+        });
+
+        // Add event listener to the form
+        document.getElementById('postForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var postInput = document.getElementById('postInput').value;
+            if (postInput.trim() !== '') {
+                var newPost = {
+                    id: Date.now(),
+                    content: postInput
+                };
+                savePost(newPost);
+                displayPosts(); // Display updated posts
+                document.getElementById('postInput').value = ''; // Clear input field
+            }
+        });
+
+        // Function to save a post to Local Storage
+        function savePost(post) {
+            var savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+            savedPosts.push(post);
+            localStorage.setItem('posts', JSON.stringify(savedPosts));
+        }
+
+        // Add event listener to the delete posts button
+        document.getElementById('deletePostsButton').addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete all posts?')) {
+                localStorage.removeItem('posts');
+                displayPosts(); // Update UI to reflect deletion
+            }
+        });
+    </script>
+</body>
+</html>
