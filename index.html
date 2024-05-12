@@ -3,35 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"-->
     <title>Nikit Mehta</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
         }
+
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            
         }
         .photo {
+            margin: auto; /* Center horizontally */
             flex: 1;
             padding: 20px;
-            min-height: 300px; /* Set minimum height to 2 inches */
+            min-height: 300px;
         }
         .photo img {
-            max-width: 100%;
-            min-width: 300px; /* Set minimum width for the image */
+            max-width: min(100%, 500px);
+            min-width: 300px;
             height: auto;
             border-radius: 8px;
+            transition: transform 0.3s ease; /* Add transition */
         }
+
+        .photo img:hover {
+            transform: scale(1.1); /* Zoom in on hover */
+        }
+
         .credentials {
+            margin: auto; /* Center horizontally */
             flex: 1;
-            padding: 20px;
+            padding: 10px;
+            display: flex; /* New addition */
+            flex-direction: column; /* New addition */
+            align-items: center; /* New addition */
         }
         .objective {
             padding-top: 20px;
@@ -51,14 +64,40 @@
             line-height: 30px;
             text-align: center;
             text-decoration: none;
+            transition: transform 0.3s ease; /* Add transition */
         }
+        #page2 a:hover {
+            transform: scale(1.1); /* Zoom in on hover */
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Mountains1.jpg'); /* Replace 'your-background-image.jpg' with your actual image path */
+            background-size: 100% 100%; /* Cover the entire screen */
+            background-repeat: no-repeat; /* Prevent image from repeating */
+            background-position: center; /* Center the background image */
+            filter: blur(10px); /* Apply blur effect */
+            opacity: 0.5; /* Decrease opacity */
+            z-index: -1; /* Set z-index to be behind everything */
+            overflow: hidden; /* Hide overflow */
+        }
+
+
     </style>
+    <link rel="stylesheet" href="nikitmehtastyles.css">
 </head>
 <body>
+<div class = "carousel-background">
 
-<div class="container">
+
+    <div class="background-image"></div>
+
+<div class="container" id="home">
     <div class="photo">
-        <img src="NikitMehta.jpg" alt="Your Photo">
+        <img src="NikitMehta.jpg" alt="Your Photo">        
     </div>
     <div class="credentials">
         <h1>Nikit Mehta</h1>
@@ -78,10 +117,31 @@
     <a href="https://www.youtube.com/@anstationery6759">Youtube</a>
 </div>
 
+
+
 <div id="page3">
     <a href="https://github.com/Ni-Kit-Mht/portfolio/raw/main/NikitMehta.pdf" download>Download CV</a>
 </div>
 
 
+
+
+<div class="navbar">
+    <a href="#home" class="navbar-link">Home</a>
+    <div class="dropdown" id="dropdown" onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+        <a href="#page11" class="navbar-link dropbtn">Pages</a>
+        <div class="dropdown-content" id="dropdownContent">
+            <a href="nikitmehtapage1.html" class="dropdown-link">Page 1</a>
+            <a href="#page21" class="dropdown-link">Page 2</a>
+            <a href="#page31" class="dropdown-link">Page 3</a>
+        </div>
+    </div>
+    <a href="#contact" class="navbar-link">Projects</a>
+</div>
+
+</div>
+
+
+<script src="nikitmehtajs.js"></script>
 </body>
 </html>
