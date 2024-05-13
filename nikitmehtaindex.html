@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"-->
     <title>Nikit Mehta</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <style>
+        .typed-cursor {
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,10 +40,22 @@
             
         }
         .photo {
-            margin: auto; /* Center horizontally */
+            display: flex;
+            flex-direction: column;
+            align-items: right;
+            text-align: center;
+            margin: 0 auto; /* Center horizontally */
             flex: 1;
             padding: 20px;
             min-height: 300px;
+        }
+        #typedp{
+            padding: 30px;
+            margin-left: auto; /* Centers the image horizontally within its container */
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: auto;
+            
         }
         .photo img {
             max-width: min(100%, 500px);
@@ -85,8 +116,14 @@
             background-position: center; /* Center the background image */
             filter: blur(10px); /* Apply blur effect */
             opacity: 0.5; /* Decrease opacity */
-            z-index: -1; /* Set z-index to be behind everything */
+            z-index: -2; /* Set z-index to be behind everything */
             overflow: hidden; /* Hide overflow */
+        }
+        #page3 a{
+            font-size: 40px; 
+            color: black;
+            background-color: white;
+            text-decoration: none !important;
         }
 
 
@@ -94,6 +131,18 @@
     <link rel="stylesheet" href="nikitmehtastyles.css">
 </head>
 <body>
+
+
+    <div id="menu-toggle">&#9776;</div>
+    <div id="sidebar">
+        <canvas id="space"></canvas>
+        <!-- Add your sidebar content here -->
+        <div class="word"><p>Creative</p></div>
+        <div class="word">Dedicated</div>
+        <div class="word">Hard Working</div>
+    </div>
+
+
 <div class = "carousel-background">
 
 
@@ -101,7 +150,8 @@
 
 <div class="container" id="home">
     <div class="photo">
-        <img src="NikitMehta.jpg" alt="Your Photo">        
+        <img src="NikitMehta.jpg" alt="Your Photo">  
+        <p id = "typedp">I'm <span id="typed"></span></p>      
     </div>
     <div class="credentials">
         <h1>Nikit Mehta</h1>
