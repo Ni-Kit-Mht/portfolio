@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Input</title>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-database-compat.js"></script>
+  <script src="database_init.js"></script>
+</head>
+<body>
+  <h1>Enter Your Email</h1>
+  <form id="emailForm">
+    <input type="email" id="emailInput" placeholder="Enter your email" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ensure Firebase is initialized
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig); // Ensure firebaseConfig is defined in database_init.js
+      }
+
+      // Reference to the Firebase Realtime Database under 'users'
+      const db = firebase.database().ref('users');
+
+      // Form submission handler
+      document.getElementById('emailForm').addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent form from submitting the default way
+
+        const emailInput = document.getElementById('emailInput');
+        const email = emailInput.value.trim();
+
+        if (email) {
+          // Generate a unique ID for each email entry
+          const newUserRef = db.push();
+          newUserRef.set({ email: email })
+            .then(() => {
+              // Redirect to the nikitmehtadatabase.html page after successful submission
+              window.location.href = 'nikitmehtadatabase.html';
+            })
+            .catch((error) => {
+              console.error('Error writing email to Firebase:', error);
+            });
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

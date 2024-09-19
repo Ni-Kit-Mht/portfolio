@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User List</title>
+  <!-- Firebase CDN scripts for UMD (browser compatible) -->
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-database-compat.js"></script>
+  <script src="database_init.js"></script> <!-- Include the local initialization script -->
+</head>
+<body>
+  <h1>Users who visited this page</h1>
+  <ul id="userList"></ul>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Reference to the Firebase Realtime Database under 'users'
+      const db = firebase.database().ref('users'); // Reference 'users' path
+
+      // Fetch users and display email list
+      db.on('value', (snapshot) => {
+        const users = snapshot.val();
+        const userList = document.getElementById('userList');
+        userList.innerHTML = ''; // Clear existing list
+
+        if (users) {
+          for (let userId in users) {
+            const li = document.createElement('li');
+            li.textContent = users[userId].email;
+            userList.appendChild(li);
+          }
+        } else {
+          userList.textContent = 'No users found.';
+        }
+      }, (error) => {
+        console.error('Error fetching data:', error);
+        document.getElementById('userList').textContent = 'Error fetching data.';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Emails</title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <h1>Submit Your Email</h1>
+
+    <!-- Form to submit email -->
+    <form id="email-form">
+        <input type="email" id="email-input" placeholder="Enter your email" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Previous Visitors</h2>
+    <ul id="visitor-list">
+        <!-- List of previous visitors will appear here -->
+    </ul>
+
+    <script>
+        // Firebase configuration
+        const encryptConfig = 'eyJhcGlLZXkiOiAiQUl6YVN5QUtOa2FIdXF5Q0dzZE9KTVAwY3pSdTdFYUNGcGU2bjQwIiwgImF1dGhEb21haW4iOiAibmlraXRtZWh0YS02MzMzMi5maXJlYmFzZWFwcC5jb20iLCAiZGF0YWJhc2VVUkwiOiAiaHR0cHM6Ly9uaWtpdG1laHRhLTYzMzMyLWRlZmF1bHQtcnRkYi5hc2lhLXNvdXRoZWFzdDEuZmlyZWJhc2VkYXRhYmFzZS5hcHAiLCAicHJvamVjdElkIjogIm5pa2l0bWVodGEtNjMzMzIiLCAic3RvcmFnZUJ1Y2tldCI6ICJuaWtpdG1laHRhLTYzMzMyLmFwcHNwb3QuY29tIiwgIm1lc3NhZ2luZ1NlbmRlcklkIjogIjMwMzkxNjIxMjQwNCIsICJhcHBJZCI6ICIxOjMwMzkxNjIxMjQwNDp3ZWI6NGI1ZjMzOWYzODQ1MmEyMmZkZjdlMSJ9';
+
+        // Decoding Base64 and parsing it as JSON
+        const decryptConfig = JSON.parse(atob(encryptConfig));
+
+        // Initialize Firebase with the decoded configuration
+        firebase.initializeApp(decryptConfig);
+        const db = firebase.firestore();
+
+        // Reference to the collection 'visitors'
+        const visitorsRef = db.collection('visitors');
+
+        // Add email to Firestore when form is submitted
+        document.getElementById('email-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get the email value
+            const email = document.getElementById('email-input').value;
+
+            // Add to Firestore
+            visitorsRef.add({
+                email: email,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                // Clear the form after submission
+                document.getElementById('email-form').reset();
+                loadVisitors(); // Refresh the visitor list
+            }).catch((error) => {
+                console.error("Error adding email: ", error);
+            });
+        });
+
+        // Function to load and display the visitor list
+        function loadVisitors() {
+            visitorsRef.orderBy('timestamp', 'desc').get().then((snapshot) => {
+                const visitorList = document.getElementById('visitor-list');
+                visitorList.innerHTML = ''; // Clear the list
+
+                // Populate the list with data from Firestore
+                snapshot.forEach((doc) => {
+                    const visitor = doc.data();
+                    const listItem = document.createElement('li');
+                    listItem.textContent = visitor.email;
+                    visitorList.appendChild(listItem);
+                });
+            }).catch((error) => {
+                console.error("Error fetching visitors: ", error);
+            });
+        }
+
+        // Load the visitor list on page load
+        loadVisitors();
+    </script>
+</body>
+</html>
