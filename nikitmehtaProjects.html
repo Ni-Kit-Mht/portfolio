@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .project, .collegeproject {
+            margin-bottom: 30px;
+        }
+
+        .project-title, .collegeproject a.project-link {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+        .project-title:hover, .collegeproject a.project-link:hover {
+            text-decoration: underline;
+        }
+
+        
+        .project-link {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 1rem;
+            color: #1a73e8;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-description {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 20px 0;
+        }
+        .project-insvisible{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="project">
+            <a href="#" class="project-title">Small Bhag Chal</a>
+            <a href="https://smallbhagchal2.pythonanywhere.com/" class="project-link">https://smallbhagchal2.pythonanywhere.com/</a>
+            <p class="project-description">
+                Small Bhag Chal is a game I developed using JS, HTML and CSS only. Its a single page html file that is being served using pythonanywhere. This is a fun 2 player game where color of the border indicates the player turn. The color and shape of the piece seperate the bhag and bhakra.
+            </p>
+        </div>
+        <hr>
+        <div class="project">
+            <a href="#" class="project-title">Sliding Puzzle Game</a>
+            <a href="https://ni-kit-mht.github.io/sliding-puzzle-game/" class="project-link">https://ni-kit-mht.github.io/sliding-puzzle-game/</a>
+            <p class="project-description">
+                This game is made with react and hosted in github. The game has a start menu, a settings menu, and a game page. As the name suggests it is a game played by a single player sliding the pieces of an image. The game sound and music can be adjusted in settings menu. The end game screen has option to restart the game. 
+            </p>
+        </div>
+        <hr>
+        <div class="project">
+            <a href="#" class="project-title">Chat App</a>
+            <a href="https://nikitmhtdjango.pythonanywhere.com/accounts/signup/" class="project-link">https://nikitmhtdjango.pythonanywhere.com/accounts/signup/</a>
+            <a href="https://nikitmhtdjango.pythonanywhere.com/chat/" class="project-link">https://nikitmhtdjango.pythonanywhere.com/chat/</a>
+
+            <p class="project-description">
+                I like to call this webpage a chat app. This is made using djngo as backend framework. There is option to sign up, sign in, log out, chat in group, chat with single user registered in the website. There is a feedback page, update profile page, topics page. This is hosted in pythonanywhere.
+            </p>
+            <hr>
+        </div>
+        <div class="project">
+            <a href="#" class="project-title">Chess</a>
+            <a href="https://ni-kit-mht.github.io/FinalChess/" class="project-link">https://ni-kit-mht.github.io/FinalChess/</a>
+            <p class="project-description">
+                A simple chess game that has premise to be played by 2 players in a single window. This game is made using react and is uploaded in github.
+            </p>
+            <hr>
+        </div>
+        <div class="project">
+            <a href="#" class="project-title">My Portfolio</a>
+            <a href="https://nikitmehta.com.np/" class="project-link">https://nikitmehta.com.np/</a>
+            <p class="project-description">
+                My own portfolio which is deployed in github is a simple website with multiple pages each serving a seperate learning experience and coding experience. It has a domain name accessable by using nepali citizenship on my name.
+            </p>
+            <hr>
+        </div>
+
+        
+        <div class="project-insvisible">
+            <a href="#" class="project-title">Project Title 1</a>
+            <a href="#" class="project-link">https://ni-kit-mht.github.io/FinalChess/</a>
+            <p class="project-description">
+                This is a brief description of the first project. It explains what the project does and its key features.
+            </p>
+            <hr>
+        </div>
+
+
+        <!-- College Projects -->
+        <div class="collegeproject">
+            <a href="#" class="project-link">Minor Project</a>
+            <p class="project-description">
+                In minor project, we group of 3 people decided to make a pollution measuring device that sends its data over to a website. I contributed to the project by using a ESP 32 chip and connecting various components like GSM module, air sensor. For the website, I build a local network connecting the ESP 32 to my localhost through http requests and responses to share the data as collected by the air sensor. 
+            </p>
+            <hr>
+        </div>
+        <div class="collegeproject">
+            <a href="#" class="project-link">Major Project</a>
+            <p class="project-description">
+                In major project, we group of 3 people decided to perform a churn analysis on data of employee of a bank. We used ANN, logistic regression, random forest algorithms to compute the various graphs and visualization methods for comparison among the seperate algorithms. We made a recommendation system that has search, user input and recommendations to user using cosine similarity, TF-IDF vectorization algorithm. We used streamlit as development tool.
+                We also added a feedback for users to input.  
+            </p>
+            <hr>
+        </div>
+        
+    </div>
+</body>
+</html>
 
