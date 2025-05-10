@@ -3,146 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"-->
-    <title>Nikit Mehta</title>
+    <meta name="description" content="A.N. Stationery - Your premier destination for quality stationery items in Nepal. Find writing instruments, art supplies for kids, office essentials, and school supplies at competitive prices.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nikitmehta.com.np/">
+    <meta property="og:title" content="A.N. Stationery | Premium Stationery Store in Nepal">
+    <meta property="og:description" content="Your one-stop shop for quality stationery items in Nepal. Explore our wide range of writing instruments, art supplies, and office essentials.">
+    <meta property="og:image" content="https://nikitmehta.com.np/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nikitmehta.com.np/">
+    <meta property="twitter:title" content="A.N. Stationery | Premium Stationery Store in Nepal">
+    <meta property="twitter:description" content="Your one-stop shop for quality stationery items in Nepal. Explore our wide range of writing instruments, art supplies, and office essentials.">
+    <meta property="twitter:image" content="https://nikitmehta.com.np/og-image.jpg">
+
+    <title>A.N. Stationery | Premium Stationery Store in Nepal</title>
+    <link rel="canonical" href="https://nikitmehta.com.np/">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            
-        }
-        .photo {
-            margin: auto; /* Center horizontally */
-            flex: 1;
-            padding: 20px;
-            min-height: 300px;
-        }
-        .photo img {
-            max-width: min(100%, 500px);
-            min-width: 300px;
-            height: auto;
-            border-radius: 8px;
-            transition: transform 0.3s ease; /* Add transition */
-        }
-
-        .photo img:hover {
-            transform: scale(1.1); /* Zoom in on hover */
-        }
-
-        .credentials {
-            margin: auto; /* Center horizontally */
-            flex: 1;
-            padding: 10px;
-            display: flex; /* New addition */
-            flex-direction: column; /* New addition */
-            align-items: center; /* New addition */
-        }
-        .objective {
-            padding-top: 20px;
-        }
-        #page2 {
-            text-align: center;
-            padding: 20px;
-        }
-        #page2 a {
-            display: inline-block;
-            margin: 5px;
-            width: 100px;
-            height: 30px;
-            background-color: #333;
-            color: #fff;
-            border-radius: 50%;
-            line-height: 30px;
-            text-align: center;
-            text-decoration: none;
-            transition: transform 0.3s ease; /* Add transition */
-        }
-        #page2 a:hover {
-            transform: scale(1.1); /* Zoom in on hover */
-        }
-        .background-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('Mountains1.jpg'); /* Replace 'your-background-image.jpg' with your actual image path */
-            background-size: 100% 100%; /* Cover the entire screen */
-            background-repeat: no-repeat; /* Prevent image from repeating */
-            background-position: center; /* Center the background image */
-            filter: blur(10px); /* Apply blur effect */
-            opacity: 0.5; /* Decrease opacity */
-            z-index: -1; /* Set z-index to be behind everything */
-            overflow: hidden; /* Hide overflow */
-        }
-
-
+        /* Basic CSS Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
+        
+        /* Header Styles */
+        header { background: #f8f9fa; padding: 1rem; text-align: center; }
+        nav { background: #ffffff; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; }
+        
+        /* Main Content */
+        .hero { text-align: center; padding: 4rem 2rem; background: #e9ecef; }
+        .products { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        
+        /* Footer */
+        footer { background: #2c3e50; color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
+        
+        /* Utilities */
+        .btn { display: inline-block; padding: 0.5rem 1rem; background: #3498db; color: white; text-decoration: none; border-radius: 4px; }
     </style>
-    <link rel="stylesheet" href="nikitmehtastyles.css">
 </head>
 <body>
-<div class = "carousel-background">
+    <header>
+        <h1>A.N. Stationery</h1>
+        <p>Your Premium Stationery Destination</p>
+    </header>
 
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <div class="background-image"></div>
+    <main>
+        <section class="hero">
+            <h2>Quality Stationery Supplies in Kathmandu</h2>
+            <p>Explore our curated collection of premium writing instruments, art supplies, and office essentials.</p>
+            <a href="/shop" class="btn">Shop Now</a>
+        </section>
 
-<div class="container" id="home">
-    <div class="photo">
-        <img src="NikitMehta.jpg" alt="Your Photo">        
-    </div>
-    <div class="credentials">
-        <h1>Nikit Mehta</h1>
-        <p>Electronics, Communication and Information Engineer</p>
-        <p>Email: nikitmht@gmail.com</p>
-        <p>Phone: +9779741813742</p>
-        <div class="objective">
-            <h2>Objective</h2>
-            <p>To apply my expertise in electronics, communication and information engineering to contribute effectively to innovative projects, leveraging my skills in research, design, and implementation.</p>
+        <section class="products">
+            <h2>Popular Products</h2>
+            <div class="product-grid">
+                <!-- Product items would go here -->
+                <article>
+                    <img src="/notebooks.jpg" alt="Premium Notebooks Collection" loading="lazy">
+                    <h3>Designer Notebooks</h3>
+                    <p>High-quality paper notebooks for students and professionals</p>
+                </article>
+                <!-- Repeat similar product blocks -->
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2>Our Categories</h2>
+            <ul>
+                <li>Writing Instruments</li>
+                <li>Art & Craft Supplies</li>
+                <li>Office Stationery</li>
+                <li>School Supplies</li>
+                <li>Paper Products</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <h3>Contact Us</h3>
+            <address>
+                Lalitpur, Nepal<br>
+                Email: anstationery1@gmail.com<br>
+                Phone: +977-9841362176
+            </address>
         </div>
-    </div>
-</div>
-<div id="page2">
-    <a href="https://www.linkedin.com/in/nikit-mehta-981613309/">LinkedIn</a>
-    <a href="https://www.facebook.com/nikit.mehta.182">Facebook</a>
-    <a href="https://github.com/Ni-Kit-Mht/">GitHub</a>
-    <a href="https://www.youtube.com/@anstationery6759">Youtube</a>
-</div>
-
-
-
-<div id="page3">
-    <a id = "" href="https://github.com/Ni-Kit-Mht/portfolio/raw/main/NikitMehta.pdf" download>Download CV</a>
-</div>
-
-
-
-
-<div class="navbar">
-    <a href="#home" class="navbar-link">Home</a>
-    <div class="dropdown" id="dropdown" onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
-        <a href="#page11" class="navbar-link dropbtn">Pages</a>
-        <div class="dropdown-content" id="dropdownContent">
-            <a href="nikitmehtapage1.html" class="dropdown-link">Page 1</a>
-            <a href="nikitmehtavisitors.html" class="dropdown-link">Visitors</a>
-            <a href="nikitmehtadatabase.html" class="dropdown-link">Users who visited the site</a>
-            <a href="email_input.html" class="dropdown-link">Register Users</a>
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+            </ul>
         </div>
-    </div>
-    <a href="nikitmehtaProjects.html" class="navbar">Projects</a>
-</div>
+        <p>&copy; 2023 A.N. Stationery. All rights reserved.</p>
+    </footer>
 
-</div>
-
-
-<script src="nikitmehtajs.js"></script>
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "A.N. Stationery",
+        "image": "https://nikitmehta.com.np/‎ANSLogoImage1.png",
+        "description": "Premium stationery store in Nepal offering quality writing instruments, art supplies, and office essentials.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lalitpur",
+            "addressCountry": "Nepal"
+        },
+        "telephone": "+977-9841362176"
+    }
+    </script>
 </body>
 </html>
