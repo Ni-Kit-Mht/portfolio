@@ -86,6 +86,21 @@ article p {
   margin: 0;
 }
 
+.image-wrapper {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-bottom: 2px solid #eee;
+}
+
+.image-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
 @media (max-width: 768px) {
   .product-grid {
     grid-template-columns: 1fr;
@@ -153,18 +168,23 @@ article:nth-child(3) { animation-delay: 0.3s; }
             <div class="product-grid">
                 <!-- Product items would go here -->
                 <article>
-                    <img src="/notebooks.jpg" alt="Premium Notebooks Collection" loading="lazy">
+                    <div class="image-wrapper">
+                        <img src="https://nikitmehta.com.np/notebooks.jpg" alt="Premium Notebooks Collection" loading="lazy">
+                    </div>
                     <h3>Designer Notebooks</h3>
                     <p>High-quality paper notebooks for students and professionals</p>
                 </article>
                 <!-- Repeat similar product blocks -->
                 <article>
-                    <img src="/kusum-safari-ball-pens.jpg" alt="Kusum Safari Ball Pens" loading="lazy">
+                    <div class="image-wrapper">
+                        <img src="https://nikitmehta.com.np/kusum-safari-ball-pens.jpg" alt="Kusum Safari Ball Pens" loading="lazy">
+                    </div>
                     <h3>Ball Pens</h3>
                     <p>High-quality and Cheap Kusum Safari Ball Pens</p>
                 </article>
             </div>
         </section>
+
 
         <section class="categories">
             <h2>Our Categories</h2>
