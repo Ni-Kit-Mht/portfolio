@@ -33,8 +33,91 @@
         
         /* Main Content */
         .hero { text-align: center; padding: 4rem 2rem; background: #e9ecef; }
-        .products { padding: 2rem; max-width: 1200px; margin: 0 auto; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.products {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+article {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+article img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-bottom: 2px solid #eee;
+}
+
+article:hover img {
+  transform: scale(1.05);
+}
+
+article h3 {
+  margin: 1rem 0 0.5rem;
+  padding: 0 1rem;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+article p {
+  padding: 0 1rem 1rem;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  article img {
+    height: 150px;
+  }
+}
+
+/* Animation for card entrance */
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+article {
+  animation: cardEntrance 0.5s ease forwards;
+  opacity: 0;
+}
+
+article:nth-child(1) { animation-delay: 0.1s; }
+article:nth-child(2) { animation-delay: 0.2s; }
+article:nth-child(3) { animation-delay: 0.3s; }
+/* Add more nth-child rules if you have more products */
+
         
         /* Footer */
         footer { background: #2c3e50; color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
