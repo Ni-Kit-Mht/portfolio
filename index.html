@@ -62,11 +62,21 @@
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #007bff;
+  background-color: #eee;
+  color: #000;
+  border-radius: 5px;
+}
+
+.activeSite {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
 }
 
 .menu-toggle {
@@ -95,13 +105,6 @@
     display: flex;
   }
     
-.activeSite {
-  background-color: black !important;
-  color: white !important;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-}
-
   .menu-toggle {
     display: block;
   }
