@@ -41,4 +41,6 @@ console.log('Current path:', currentPath);
   }
 }
 
-customElements.define('my-navbar', MyNavbar);
+document.addEventListener("DOMContentLoaded", () => {
+  customElements.define('my-navbar', MyNavbar);
+});
