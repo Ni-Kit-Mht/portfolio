@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(links)
   links.forEach(link => {
     console.log(link)
-    console.log(link.getAttribut('href'))
+    console.log(link.getAttribute('href'))
     if (link.getAttribute('href') === currentPath) {
       link.classList.add('activeSite');
     }
