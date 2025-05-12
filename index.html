@@ -203,6 +203,56 @@ article:nth-child(2) { animation-delay: 0.2s; }
 article:nth-child(3) { animation-delay: 0.3s; }
 /* Add more nth-child rules if you have more products */
 
+.containerOfCategoriesAndServices {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 1rem;
+  animation: fadeSlideIn 1s ease-in-out;
+}
+
+.categories,
+.services {
+  flex: 1 1 300px;
+  max-width: 48%;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s forwards;
+}
+
+/* Stagger animations */
+.categories {
+  animation-delay: 0.2s;
+}
+.services {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive layout for small screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .categories,
+  .services {
+    max-width: 100%;
+  }
+}
+
         
         /* Footer */
         footer { background: #2c3e50; color: white; padding: 2rem; text-align: center; margin-top: 2rem; }
@@ -224,11 +274,11 @@ article:nth-child(3) { animation-delay: 0.3s; }
             <div class="logo">A.N. Stationery</div>
             <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
             <ul class="nav-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/categories">Categories</a></li>
-              <li><a href="/shop">Shop</a></li>
-              <li><a href="/services">Services</a></li>
-              <li><a href="/contact">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -264,16 +314,30 @@ article:nth-child(3) { animation-delay: 0.3s; }
         </section>
 
 
-        <section class="categories">
+        <div class="containerOfCategoriesAndServices">
+          <section class="categories">
             <h2>Our Categories</h2>
             <ul>
-                <li>Writing Instruments</li>
-                <li>Art & Craft Supplies</li>
-                <li>Office Stationery</li>
-                <li>School Supplies</li>
-                <li>Paper Products</li>
+              <li>Writing Instruments</li>
+              <li>Art & Craft Supplies</li>
+              <li>Office Stationery</li>
+              <li>School Supplies</li>
+              <li>Paper Products</li>
             </ul>
-        </section>
+          </section>
+          <section class="services">
+            <h2>Our Services</h2>
+            <ul>
+              <li>Stationery</li>
+              <li>School Shoes and Socks</li>
+              <li>Photo Studio</li>
+              <li>Photocopy</li>
+              <li>Print</li>
+              <li>Lamination</li>
+            </ul>
+          </section>
+        </div>
+
     </main>
 
     <footer class = "footer">
