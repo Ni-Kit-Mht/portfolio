@@ -1,50 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
-<style>
-.nav-links a.activeSite {
-  background-color: black !important;
-  color: white !important;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop|A.N. Stationery</title>
+      <link rel="stylesheet" href="https://nikitmehta.com.np/style.css">
 
-</style>
 </head>
 <body>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const currentPath = window.location.pathname;
-  console.log(currentPath)
-  const links = document.querySelectorAll('.nav-links a');
-  console.log(links)
+<my-navbar></my-navbar>
 
-  links.forEach(link => {
-    console.log(link.getAttribute('href'))
+  <main>
+    <h1>Welcome to A.N. Stationery Shop Page</h1>
+    <!-- Page-specific content here -->
+  </main>
 
-    if (link.getAttribute('href') === "/") {
-        console.log(link.getAttribute('href'))
-      link.classList.add('activeSite');
-    }
-  });
-});
-</script>
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-<nav>
-        <div class="nav-container">
-            <div class="logo">A.N. Stationery</div>
-            <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
-            <ul class="nav-links">
-                <li><a class="aTags" href="/">Home</a></li>
-                <li><a class="aTags" href="/shop">Shop</a></li>
-                <li><a  href="/services">Services</a></li>
-                <li><a  href="/categories">Categories</a></li>
-                <li><a  href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <my-footer></my-footer>
+<script src="https://nikitmehta.com.np/nav.js" defer></script>
+<script src="https://nikitmehta.com.np/footer.js" defer></script>
 
 </body>
 </html>
