@@ -16,20 +16,27 @@ class MyNavbar extends HTMLElement {
       </nav>
     `;
 
-    // ✅ Highlight current page (scoped inside the component)
-    const currentPath = window.location.pathname;
-    this.querySelectorAll('.nav-links a').forEach(link => {
-      if (link.getAttribute('href') === currentPath) {
-        link.classList.add('activeSite');
-      }
-    });
+    // Delay execution to ensure DOM is rendered
+    requestAnimationFrame(() => {
+      // Normalize path
+      const currentPath = window.location.pathname.replace(/\/index\.html$/, '');
+console.log('Current path:', currentPath);
 
-    // ✅ Toggle menu for mobile
-    const toggleButton = this.querySelector(".menu-toggle");
-    const navLinks = this.querySelector(".nav-links");
-    toggleButton.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+      // Highlight active link
+      this.querySelectorAll('.nav-links a').forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+          link.classList.add('activeSite');
+        }
+      });
+
+      // Toggle menu
+      const toggleButton = this.querySelector(".menu-toggle");
+      const navLinks = this.querySelector(".nav-links");
+      toggleButton.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
     });
   }
 }
+
 customElements.define('my-navbar', MyNavbar);
