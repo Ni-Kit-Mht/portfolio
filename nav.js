@@ -16,19 +16,15 @@ class MyNavbar extends HTMLElement {
       </nav>
     `;
 
-        // Highlight current page
-        document.addEventListener('DOMContentLoaded', () => {
-                const currentPath = window.location.pathname;
-                const links = document.querySelectorAll('.nav-links a');
-                links.forEach(link => {
-                        if (link.getAttribute('href') === currentPath) {
-                                link.classList.add('activeSite');
-                        }
-                });
-        });
+    // ✅ Highlight current page (scoped inside the component)
+    const currentPath = window.location.pathname;
+    this.querySelectorAll('.nav-links a').forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('activeSite');
+      }
+    });
 
-
-    // Toggle menu for mobile
+    // ✅ Toggle menu for mobile
     const toggleButton = this.querySelector(".menu-toggle");
     const navLinks = this.querySelector(".nav-links");
     toggleButton.addEventListener("click", () => {
