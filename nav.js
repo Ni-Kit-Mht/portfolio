@@ -7,10 +7,10 @@ class MyNavbar extends HTMLElement {
           <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
           <ul class="nav-links">
             <li><a class="aTags" href="/">Home</a></li>
-            <li><a class="aTags" href="/shop">Shop</a></li>
-            <li><a class="aTags" href="/services">Services</a></li>
-            <li><a class="aTags" href="/categories">Categories</a></li>
-            <li><a class="aTags" href="/contact">Contact</a></li>
+            <li><a class="aTags" href="/shop/">Shop</a></li>
+            <li><a class="aTags" href="/services/">Services</a></li>
+            <li><a class="aTags" href="/categories/">Categories</a></li>
+            <li><a class="aTags" href="/contact/">Contact</a></li>
           </ul>
         </div>
       </nav>
