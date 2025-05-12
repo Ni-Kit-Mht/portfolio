@@ -24,6 +24,8 @@ console.log('Current path:', currentPath);
 
       // Highlight active link
       this.querySelectorAll('.nav-links a').forEach(link => {
+        console.log('Link:', link.getAttribute('href'));
+
         if (link.getAttribute('href') === currentPath) {
           link.classList.add('activeSite');
         }
