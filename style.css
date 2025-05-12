@@ -82,7 +82,7 @@
   }
     
   .menu-toggle {
-    display: block;
+    display: block !important;
   }
 }
 
