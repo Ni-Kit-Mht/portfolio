@@ -4,7 +4,7 @@
 
     links.forEach(link => {
       if (link.getAttribute('href') === currentPath) {
-        link.classList.add('active');
+        link.classList.add('activeSite');
       }
     });
   });
