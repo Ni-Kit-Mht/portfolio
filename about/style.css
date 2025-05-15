@@ -1,5 +1,12 @@
-body {
-  background-image: url('/about.jpeg'); /* Replace with your image path */
+#image1 {
+  width: 100%;
+  height: auto;
+  max-width: 42.4%;
+  display: block;
+}
+
+main {
+  background-image: url('https://nikitmehta.com.np/about.jpeg'); /* Replace with your image path */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -7,7 +14,9 @@ body {
   /* Create blending effect */
   background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black */
   background-blend-mode: multiply;
+  position: relative;
 }
+
 
 #para1, #para2, #para3, #para4 {
   position: absolute;
@@ -20,9 +29,16 @@ body {
 }
 
 #para2 {
-  top: 160px;
-  left: 60px;
+  font-size: 0.7em;
+  position: absolute;
+  top: 25%;
+  left: 67%;
+  transform: translateX(-50%); /* Shifts the block left by 50% of its own width */
+  width: 40vw;
+  color: black;
+  text-align: justify;         /* Optional: better text alignment */
 }
+
 
 #para3 {
   top: 400px;
