@@ -8,3 +8,28 @@ body {
   background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black */
   background-blend-mode: multiply;
 }
+
+#para1, #para2, #para3, #para4 {
+  position: absolute;
+}
+
+/* Example positions — update x/y as needed */
+#para1 {
+  top: 100px;
+  left: 50px;
+}
+
+#para2 {
+  top: 160px;
+  left: 60px;
+}
+
+#para3 {
+  top: 400px;
+  left: 80px;
+}
+
+#para4 {
+  top: 450px;
+  left: 100px;
+}
