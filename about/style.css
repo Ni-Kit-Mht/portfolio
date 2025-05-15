@@ -76,13 +76,12 @@ main {
   left: 1%;
 }
 
-button {
+#button1 {
   position: absolute;
   top: 70%;
   left: 1%;
 
   background-color: black;
-  color: white;
 
   padding: 10px 20px;
       font-size: clamp(15px, 2vw, 22px);
@@ -93,11 +92,11 @@ button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
+#button1:hover {
   background-color: #333;
   transform: scale(1.05);
 }
-a{
+button a{
   text-decoration: none;
   color: white;
 }
