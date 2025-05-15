@@ -1,0 +1,10 @@
+body {
+  background-image: url('/about.jpeg'); /* Replace with your image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* Create blending effect */
+  background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black */
+  background-blend-mode: multiply;
+}
