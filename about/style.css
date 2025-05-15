@@ -5,7 +5,7 @@
 h1{
   background-color: rgba(255, 255, 255, 0.5); /* 50% transparent black */ 
     font-size: clamp(10px, 5vw, 220px);
-
+  left: 1%;
 }
 .image-container {
   position: relative;
