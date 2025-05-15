@@ -1,9 +1,30 @@
+*{
+  padding: 0;
+  margin:0;
+}
+h1{
+  background-color: rgba(255, 255, 255, 0.5); /* 50% transparent black */ 
+    font-size: clamp(10px, 5vw, 220px);
+
+}
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 42.3%;
+  background-color: rgba(255, 255, 255, 0.9); /* 50% transparent black */
+  background-blend-mode: multiply; /* or lighten, depending on effect */
+  display: inline-block;
+}
+
 #image1 {
   width: 100%;
   height: auto;
-  max-width: 42.4%;
+  opacity: 0.5;
+  mix-blend-mode: multiply; /* or screen, lighten */
   display: block;
+  z-index: 1;
 }
+
 
 main {
   background-image: url('https://nikitmehta.com.np/about.jpeg'); /* Replace with your image path */
@@ -12,7 +33,7 @@ main {
   background-position: center;
 
   /* Create blending effect */
-  background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black */
+  background-color: rgba(0, 0, 0, 0.2); /* 50% transparent black */
   background-blend-mode: multiply;
   position: relative;
 }
@@ -20,16 +41,19 @@ main {
 
 #para1, #para2, #para3, #para4 {
   position: absolute;
+  z-index: 10;
 }
 
 /* Example positions — update x/y as needed */
 #para1 {
-  top: 100px;
-  left: 50px;
+  top: 25%;
+  left: 1%;
+  font-size: clamp(5px, 3vw, 50px);
+  text-align: center;
 }
 
 #para2 {
-  font-size: 0.7em;
+  font-size: clamp(5px, 1.8vw, 22px);
   position: absolute;
   top: 25%;
   left: 67%;
@@ -41,11 +65,39 @@ main {
 
 
 #para3 {
-  top: 400px;
-  left: 80px;
+    font-size: clamp(10px, 2vw, 22px);
+  top: 50%;
+  left: 1%;
 }
 
 #para4 {
-  top: 450px;
-  left: 100px;
+      font-size: clamp(10px, 2vw, 22px);
+  top: 60%;
+  left: 1%;
+}
+
+button {
+  position: absolute;
+  top: 70%;
+  left: 1%;
+
+  background-color: black;
+  color: white;
+
+  padding: 10px 20px;
+      font-size: clamp(15px, 2vw, 22px);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+a{
+  text-decoration: none;
+  color: white;
 }
