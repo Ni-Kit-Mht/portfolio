@@ -1,23 +1,27 @@
-// sw.js (put in root)
+const CACHE_NAME = 'v1';
+const FILES_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/shop/index.html',
+  '/style.css',
+  '/nav.js',
+  '/footer.js',
+  '/database.json'
+];
+
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('static-cache').then(cache => {
-      return cache.addAll([
-        '/',
-        '/shop/index.html',
-        '/database.json',
-        '/style.css',
-        '/script.js',
-        // Add image URLs if you want them cached too
-      ]);
+    caches.open(CACHE_NAME).then(cache => {
+      return Promise.all(
+        FILES_TO_CACHE.map(file =>
+          fetch(file).then(response => {
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            return cache.put(file, response.clone());
+          }).catch(err => {
+            console.warn(`[SW] Skipping ${file}: ${err.message}`);
+          })
+        )
+      );
     })
-  );
-  self.skipWaiting();
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
   );
 });
