@@ -76,9 +76,9 @@
   },
   {
     "id": "P048",
-    "name": "12V Battery",
-    "description": "High-power 12V battery for use in remote control toys and small electronics.",
-    "image": "images/battery-12v.jpg",
+    "name": "9V Battery",
+    "description": "High-power 9V battery for use in remote control toys and small electronics.",
+    "image": "images/battery-9v.jpg",
     "product_type": "Gadgets & Electronics",
     "category": "Batteries",
     "popularity": 69,
