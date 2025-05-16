@@ -4,6 +4,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop | A.N. Stationery</title>
   <link rel="stylesheet" href="https://nikitmehta.com.np/style.css">
+<style>
+  /* Loading spinner */
+  #loading {
+    display: none;
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Product layout */
+  #productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .product-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.3s forwards;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  input#searchInput {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+</style>
+
 </head>
 <body>
   <my-navbar></my-navbar>
