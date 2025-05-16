@@ -1,22 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop|A.N. Stationery</title>
-      <link rel="stylesheet" href="https://nikitmehta.com.np/style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | A.N. Stationery</title>
+  <link rel="stylesheet" href="https://nikitmehta.com.np/style.css">
 </head>
 <body>
-<my-navbar></my-navbar>
+  <my-navbar></my-navbar>
 
   <main>
     <h1>Welcome to A.N. Stationery Shop Page</h1>
-    <!-- Page-specific content here -->
+
+    <input type="text" id="searchInput" placeholder="Search products..." />
+
+    <div id="productList"></div>
+        <div id="loading"><div class="spinner"></div></div>
+
   </main>
 
   <my-footer></my-footer>
-<script src="https://nikitmehta.com.np/nav.js" defer></script>
-<script src="https://nikitmehta.com.np/footer.js" defer></script>
+
+  <script src="https://nikitmehta.com.np/nav.js" defer></script>
+  <script src="https://nikitmehta.com.np/footer.js" defer></script>
+
+  <script>
+  const DB_URL = 'https://nikitmehta.com.np/database.json';
+
+  function showLoading() {
+    document.getElementById('loading').style.display = 'block';
+  }
+
+  function hideLoading() {
+    document.getElementById('loading').style.display = 'none';
+  }
+
+  async function fetchData() {
+    showLoading();
+    try {
+      const cached = localStorage.getItem('productData');
+      if (cached) {
+        hideLoading();
+        return JSON.parse(cached);
+      }
+
+      const res = await fetch(DB_URL);
+      if (!res.ok) throw new Error('Failed to fetch database.json');
+      const data = await res.json();
+
+      localStorage.setItem('productData', JSON.stringify(data));
+      hideLoading();
+      return data;
+    } catch (err) {
+      console.error(err);
+      hideLoading();
+      return [];
+    }
+  }
+
+  function renderProducts(products) {
+    const list = document.getElementById('productList');
+    list.innerHTML = '';
+    products.forEach((product, index) => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.style.animationDelay = `${index * 50}ms`; // staggered fade-in
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="product-image" />
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+        <p><strong>Rating:</strong> ${product.rating} / 5</p>
+        <p><strong>Stock:</strong> ${product.stock}</p>
+        <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  function searchProducts(data, query) {
+    const lower = query.toLowerCase();
+    return data.filter(item =>
+      item.name.toLowerCase().includes(lower) ||
+      item.description.toLowerCase().includes(lower) ||
+      (item.tags || []).some(tag => tag.toLowerCase().includes(lower))
+    );
+  }
+
+  fetchData().then(data => {
+    renderProducts(data);
+
+    const input = document.getElementById('searchInput');
+    input.addEventListener('input', (e) => {
+      showLoading();
+      setTimeout(() => {
+        const filtered = searchProducts(data, e.target.value);
+        renderProducts(filtered);
+        hideLoading();
+      }, 300); // simulate delay for smooth UX
+    });
+  });
+
+  // Register service worker for offline support
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('Service Worker registered'))
+      .catch(err => console.error('Service Worker registration failed:', err));
+  }
+</script>
 
 </body>
 </html>
