@@ -1,22 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services</title>
-      <link rel="stylesheet" href="https://nikitmehta.com.np/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | A.N. Stationery</title>
+  <link rel="stylesheet" href="https://nikitmehta.com.np/style.css">
 
+  <style>
+    /* Background container with image and overlay */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('services.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem 1.5rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #f0f0f0;
+    }
+
+    h2 {
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #fff;
+      padding-bottom: 0.3rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+     ul li {
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    line-height: 1.5;
+    font-size: 1.15rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3; /* clamp 3 lines */
+  }
+
+  @media (max-width: 400px) {
+    ul li {
+      font-size: 0.9rem;
+      -webkit-line-clamp: 1; /* clamp 1 line */
+    }
+  }
+
+    ul li strong {
+      color: #ffd700; /* golden highlight for service titles */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      main {
+        margin: 1.5rem;
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      ul li {
+      font-size: 1rem;
+      -webkit-line-clamp: 2; /* clamp 2 lines */
+    }
+    }
+  </style>
 </head>
 <body>
-<my-navbar></my-navbar>
+  <my-navbar></my-navbar>
 
   <main>
     <h1>Welcome to A.N. Stationery Services</h1>
-    <!-- Page-specific content here -->
+
+    <section>
+      <h2>Our Services</h2>
+      <ul>
+        <li><strong>Stationery Supplies:</strong> Pens, pencils, notebooks, files, markers, erasers, and more.</li>
+        <li><strong>Photocopy:</strong> High-quality black & white and color photocopying.</li>
+        <li><strong>Printing:</strong> Document printing, assignments, reports, flyers, posters, etc.</li>
+        <li><strong>Lamination:</strong> Protect your documents with hot and cold lamination services.</li>
+        <li><strong>Scanning:</strong> High-resolution scanning of documents, photos, and more.</li>
+        <li><strong>Photo Studio:</strong> Instant passport-sized photos, photo printing, ID photo editing, and more.</li>
+        <li><strong>SIM Cards & Recharge:</strong> We provide new SIM cards and mobile recharge cards.</li>
+        <li><strong>Online Ticket Booking:</strong> Bus and flight ticket booking services available.</li>
+        <li><strong>Utility Bill Payments:</strong> Pay your electricity, internet, and TV bills online with us.</li>
+      </ul>
+    </section>
   </main>
 
   <my-footer></my-footer>
-<script src="https://nikitmehta.com.np/nav.js" defer></script>
-<script src="https://nikitmehta.com.np/footer.js" defer></script>
-
+  <script src="https://nikitmehta.com.np/nav.js" defer></script>
+  <script src="https://nikitmehta.com.np/footer.js" defer></script>
 </body>
 </html>
