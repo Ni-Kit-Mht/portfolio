@@ -23,13 +23,7 @@
 
     /* Background image on body */
     body {
-      background: url('services.jpeg') no-repeat center center;
-      background-size: cover;
-      background-attachment: scroll; /* avoid fixed attachment */
-      /* fallback background color */
-      background-color: #000;
-      position: relative;
-      z-index: 0;
+      
     }
 
     /* Overlay gradient using pseudo-element on body */
@@ -50,7 +44,12 @@
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.7);
       position: relative;
-      z-index: 1; /* above overlay */
+      background: url('services.jpeg') no-repeat center center;
+      background-size: cover;
+      background-attachment: scroll; /* avoid fixed attachment */
+      /* fallback background color */
+      background-color: #000;
+      position: relative;
     }
 
     h1 {
