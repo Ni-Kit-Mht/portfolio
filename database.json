@@ -15,8 +15,107 @@
     "estimated_days_to_availability": 0,
     "tags": ["drawing", "school", "stationery", "sketch"]
   },
+
   {
     "id": "P002",
+    "name": "Blue Cello Ball Pen",
+    "price": "20",
+    "description": "Smooth-writing blue ball pen from Cello. Comfortable grip and consistent ink flow.",
+    "image": "Images/cello-blue-ball.jpg",
+    "product_type": "Writing Tools",
+    "category": "Ball Pen",
+    "popularity": 82,
+    "rating": 4.4,
+    "available": true,
+    "available_soon": false,
+    "stock": 100,
+    "estimated_days_to_availability": 0,
+    "tags": ["school", "office", "stationery", "writing"]
+  },
+  {
+    "id": "P003",
+    "name": "Black Cello Ball Pen",
+    "price": "20",
+    "description": "Reliable black ball pen from Cello. Ideal for daily writing with long-lasting ink.",
+    "image": "Images/cello-black-ball.jpg",
+    "product_type": "Writing Tools",
+    "category": "Ball Pen",
+    "popularity": 79,
+    "rating": 4.3,
+    "available": true,
+    "available_soon": false,
+    "stock": 95,
+    "estimated_days_to_availability": 0,
+    "tags": ["school", "stationery", "writing", "black ink"]
+  },
+  {
+    "id": "P004",
+    "name": "Blue Nataraj Gel Pen",
+    "price": "10",
+    "description": "Blue gel pen by Nataraj offering smooth writing and rich ink flow for an enhanced writing experience.",
+    "image": "Images/nataraj-blue-gel.jpg",
+    "product_type": "Writing Tools",
+    "category": "Gel Pen",
+    "popularity": 85,
+    "rating": 4.6,
+    "available": true,
+    "available_soon": false,
+    "stock": 150,
+    "estimated_days_to_availability": 0,
+    "tags": ["writing", "school", "stationery", "gel pen"]
+  },
+  {
+    "id": "P005",
+    "name": "Black Claro Gel Pen",
+    "price": "10",
+    "description": "Black gel pen by Claro. Smooth writing and fade-resistant ink, perfect for long-form notes.",
+    "image": "Images/claro-black-gel.jpg",
+    "product_type": "Writing Tools",
+    "category": "Gel Pen",
+    "popularity": 77,
+    "rating": 4.2,
+    "available": true,
+    "available_soon": false,
+    "stock": 90,
+    "estimated_days_to_availability": 0,
+    "tags": ["stationery", "writing", "gel ink", "black pen"]
+  },
+  {
+    "id": "P006",
+    "name": "Black Claro Ball Pen",
+    "price": "10",
+    "description": "Claro's black ball pen with a sleek body design and easy-glide ink technology.",
+    "image": "Images/claro-black-ball.jpg",
+    "product_type": "Writing Tools",
+    "category": "Ball Pen",
+    "popularity": 74,
+    "rating": 4.1,
+    "available": true,
+    "available_soon": false,
+    "stock": 80,
+    "estimated_days_to_availability": 0,
+    "tags": ["black ink", "writing", "office", "stationery"]
+  },
+  {
+    "id": "P007",
+    "name": "Pentonic Ball Pen",
+    "price": "20",
+    "description": "Premium ball pen by Pentonic. Modern look with ultra-low viscosity ink for effortless writing.",
+    "image": "Images/pentonic-ball.jpg",
+    "product_type": "Writing Tools",
+    "category": "Ball Pen",
+    "popularity": 90,
+    "rating": 4.7,
+    "available": true,
+    "available_soon": false,
+    "stock": 110,
+    "estimated_days_to_availability": 0,
+    "tags": ["premium", "writing", "stationery", "office"]
+  },
+
+  
+  {
+    "id": "P008",
     "name": "Ball Pen",
     "price": "10",
     "description": "Smooth ballpoint pen with consistent ink flow. Great for school and office use.",
@@ -32,7 +131,7 @@
     "tags": ["writing", "pen", "office"]
   },
   {
-    "id": "P010",
+    "id": "P09",
     "name": "Geometry Box (Metal)",
     "price": "150",
     "description": "Durable metal geometry box with compass, protractor, ruler, and divider. Ideal for exams and school use.",
@@ -48,7 +147,7 @@
     "tags": ["geometry", "math", "school"]
   },
   {
-    "id": "P021",
+    "id": "P010",
     "name": "Toy Helicopter",
     "price": "500",
     "description": "Remote-controlled helicopter with rechargeable battery and LED lights. Fun for kids aged 6+.",
@@ -64,7 +163,7 @@
     "tags": ["toys", "helicopter", "remote control"]
   },
   {
-    "id": "P035",
+    "id": "P011",
     "name": "School Shoes (Black)",
     "price": "500",
     "description": "Comfortable and durable school shoes in various sizes. Ideal for daily school wear.",
@@ -80,7 +179,7 @@
     "tags": ["shoes", "uniform", "school"]
   },
   {
-    "id": "P048",
+    "id": "P012",
     "name": "9V Battery",
     "price": "50",
     "description": "High-power 9V battery for use in remote control toys and small electronics.",
