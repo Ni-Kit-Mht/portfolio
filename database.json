@@ -2,6 +2,7 @@
   {
     "id": "P001",
     "name": "HB Pencil",
+    "price": "15",
     "description": "Classic HB pencil suitable for writing and sketching. Smooth graphite and durable wood.",
     "image": "Images/pencil-hb.jpg",
     "product_type": "Writing Tools",
@@ -17,6 +18,7 @@
   {
     "id": "P002",
     "name": "Ball Pen",
+    "price": "10",
     "description": "Smooth ballpoint pen with consistent ink flow. Great for school and office use.",
     "image": "Images/ball-pen.jpg",
     "product_type": "Writing Tools",
@@ -32,6 +34,7 @@
   {
     "id": "P010",
     "name": "Geometry Box (Metal)",
+    "price": "150",
     "description": "Durable metal geometry box with compass, protractor, ruler, and divider. Ideal for exams and school use.",
     "image": "Images/geometry-metal.jpg",
     "product_type": "School Essentials & Storage",
@@ -47,6 +50,7 @@
   {
     "id": "P021",
     "name": "Toy Helicopter",
+    "price": "500",
     "description": "Remote-controlled helicopter with rechargeable battery and LED lights. Fun for kids aged 6+.",
     "image": "Images/toy-helicopter.jpg",
     "product_type": "Remote Control Toy Cars & Helicopters",
@@ -62,6 +66,7 @@
   {
     "id": "P035",
     "name": "School Shoes (Black)",
+    "price": "500",
     "description": "Comfortable and durable school shoes in various sizes. Ideal for daily school wear.",
     "image": "Images/school-shoes.jpg",
     "product_type": "School Shoes & Socks",
@@ -77,6 +82,7 @@
   {
     "id": "P048",
     "name": "9V Battery",
+    "price": "50",
     "description": "High-power 9V battery for use in remote control toys and small electronics.",
     "image": "Images/battery-9v.jpg",
     "product_type": "Gadgets & Electronics",
