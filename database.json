@@ -193,5 +193,70 @@
     "stock": 0,
     "estimated_days_to_availability": 3,
     "tags": ["battery", "electronics", "toys"]
-  }
+  },
+  {
+  "id": "P013",
+  "name": "White Doms Eraser",
+  "price": "5",
+  "description": "Soft and clean erasing white Doms eraser. Ideal for school and office use.",
+  "image": "Images/doms-eraser-white.jpg",
+  "product_type": "Stationery",
+  "category": "Erasers",
+  "popularity": 74,
+  "rating": 4.3,
+  "available": true,
+  "available_soon": false,
+  "stock": 120,
+  "estimated_days_to_availability": 0,
+  "tags": ["eraser", "doms", "stationery", "school"]
+},
+{
+  "id": "P014",
+  "name": "Long Transparent Doms Scale (30cm)",
+  "price": "20",
+  "description": "Durable and clear 30cm Doms scale for precise measurements.",
+  "image": "Images/doms-scale-long.jpg",
+  "product_type": "Stationery",
+  "category": "Rulers & Scales",
+  "popularity": 67,
+  "rating": 4.0,
+  "available": true,
+  "available_soon": false,
+  "stock": 85,
+  "estimated_days_to_availability": 0,
+  "tags": ["scale", "doms", "stationery", "30cm"]
+},
+{
+  "id": "P015",
+  "name": "Small Transparent Doms Scale (15cm)",
+  "price": "10",
+  "description": "Compact 15cm transparent Doms scale, perfect for pencil cases.",
+  "image": "Images/doms-scale-small.jpg",
+  "product_type": "Stationery",
+  "category": "Rulers & Scales",
+  "popularity": 71,
+  "rating": 4.2,
+  "available": true,
+  "available_soon": false,
+  "stock": 100,
+  "estimated_days_to_availability": 0,
+  "tags": ["scale", "doms", "stationery", "15cm"]
+},
+{
+  "id": "P016",
+  "name": "Broad Transparent Doms Scale (5cm wide)",
+  "price": "40",
+  "description": "Wide transparent Doms scale ideal for geometry and technical drawing.",
+  "image": "Images/doms-scale-broad.jpg",
+  "product_type": "Stationery",
+  "category": "Rulers & Scales",
+  "popularity": 63,
+  "rating": 3.8,
+  "available": true,
+  "available_soon": false,
+  "stock": 60,
+  "estimated_days_to_availability": 0,
+  "tags": ["scale", "doms", "stationery", "broad"]
+}
+
 ]
