@@ -88,6 +88,7 @@
 
     <div id="productList"></div>
         <div id="loading"><div class="spinner"></div></div>
+    <div id="pagination" style="text-align:center; margin: 1rem;"></div>
 
   </main>
 
@@ -99,6 +100,9 @@
 <script nonce="r4nd0mStr1ng">
   const DB_URL = 'https://nikitmehta.com.np/database.json';
   const CACHE_TTL_MS = 1 * 24 * 60 * 60 * 1000; // 1 day
+  const ITEMS_PER_PAGE = 9;
+  let currentPage = 1;
+  let filteredData = [];
 
   function showLoading() {
     document.getElementById('loading').style.display = 'block';
@@ -173,32 +177,75 @@
     }
   }
 
-  function renderProducts(products) {
-    const list = document.getElementById('productList');
-    list.innerHTML = '';
+  function renderPaginationControls(current, total) {
+  const container = document.getElementById('pagination');
 
-    if (products.length === 0) {
-      list.innerHTML = '<p>No products found.</p>';
-      return;
+  function createButton(text, page, disabled = false) {
+    const btn = document.createElement('button');
+    btn.textContent = text;
+    btn.disabled = disabled;
+    btn.style.cssText = `
+      margin: 0 4px; padding: 6px 12px; border: none; border-radius: 4px;
+      background: ${disabled ? '#ccc' : '#3498db'}; color: white; cursor: ${disabled ? 'default' : 'pointer'};
+    `;
+    if (!disabled) {
+      btn.onclick = () => {
+        currentPage = page;
+        renderProducts(filteredData, currentPage);
+      };
     }
-
-    products.forEach((product, index) => {
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.style.animationDelay = `${index * 50}ms`;
-      card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}" class="product-image" />
-        <h2>${product.name}</h2>
-        <p><strong>Price:</strong> Rs ${product.price} /-</p>
-        <p>${product.description}</p>
-        <p><strong>Rating:</strong> ${product.rating} / 5</p>
-        <p><strong>Stock:</strong> ${product.stock}</p>
-        <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? 
-          `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
-      `;
-      list.appendChild(card);
-    });
+    container.appendChild(btn);
   }
+
+  createButton('<< First', 1, current === 1);
+  createButton('< Prev 5', Math.max(1, current - 5), current <= 5);
+  createButton('< Prev', current - 1, current === 1);
+
+  createButton(`Page ${current}`, current, true);
+
+  createButton('Next >', current + 1, current === total);
+  createButton('Next 5 >', Math.min(total, current + 5), current + 5 > total);
+  createButton('Last >>', total, current === total);
+}
+
+  
+
+function renderProducts(products, page = 1) {
+  const list = document.getElementById('productList');
+  const pagination = document.getElementById('pagination');
+  list.innerHTML = '';
+  pagination.innerHTML = '';
+
+  if (products.length === 0) {
+    list.innerHTML = '<p>No products found.</p>';
+    return;
+  }
+
+  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+  const start = (page - 1) * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const paginatedItems = products.slice(start, end);
+
+  paginatedItems.forEach((product, index) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.style.animationDelay = `${index * 50}ms`;
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" class="product-image" />
+      <h2>${product.name}</h2>
+      <p><strong>Price:</strong> Rs ${product.price} /-</p>
+      <p>${product.description}</p>
+      <p><strong>Rating:</strong> ${product.rating} / 5</p>
+      <p><strong>Stock:</strong> ${product.stock}</p>
+      <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? 
+        `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
+    `;
+    list.appendChild(card);
+  });
+
+  renderPaginationControls(page, totalPages);
+}
+
 
   function searchProducts(data, query) {
     const lower = query.toLowerCase();
@@ -210,14 +257,16 @@
   }
 
   fetchData().then(data => {
-    renderProducts(data);
-
+    filteredData = data;
+    renderProducts(filteredData, currentPage);
+    
     const input = document.getElementById('searchInput');
     input.addEventListener('input', (e) => {
       showLoading();
       setTimeout(() => {
-        const filtered = searchProducts(data, e.target.value);
-        renderProducts(filtered);
+        filteredData = searchProducts(data, e.target.value);
+        currentPage = 1;
+        renderProducts(filteredData, currentPage);
         hideLoading();
       }, 300);
     });
