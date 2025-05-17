@@ -98,6 +98,7 @@
 
 <script nonce="r4nd0mStr1ng">
   const DB_URL = 'https://nikitmehta.com.np/database.json';
+  const CACHE_TTL_MS = 1 * 24 * 60 * 60 * 1000; // 1 day
 
   function showLoading() {
     document.getElementById('loading').style.display = 'block';
@@ -107,36 +108,84 @@
     document.getElementById('loading').style.display = 'none';
   }
 
-  async function fetchData() {
-    showLoading();
+  async function fetchFreshData() {
     try {
-      const cached = localStorage.getItem('productData');
-      if (cached) {
-        hideLoading();
-        return JSON.parse(cached);
-      }
-
       const res = await fetch(DB_URL);
       if (!res.ok) throw new Error('Failed to fetch database.json');
       const data = await res.json();
-
       localStorage.setItem('productData', JSON.stringify(data));
-      hideLoading();
+      localStorage.setItem('productData_ts', Date.now().toString());
       return data;
     } catch (err) {
-      console.error(err);
+      console.error('[Fetch Fresh] Error:', err);
+      return null;
+    }
+  }
+
+  async function fetchData() {
+    showLoading();
+    const cached = localStorage.getItem('productData');
+    const cachedAt = localStorage.getItem('productData_ts');
+    const now = Date.now();
+
+    let data = [];
+
+    if (cached && cachedAt) {
+      const isFresh = now - parseInt(cachedAt) < CACHE_TTL_MS;
+      data = JSON.parse(cached);
       hideLoading();
-      return [];
+
+      // Fetch in background if stale
+      if (!isFresh) {
+        console.log('[Cache] Expired. Fetching in background...');
+        fetchFreshData().then(fresh => {
+          if (fresh) {
+            const oldHash = JSON.stringify(data);
+            const newHash = JSON.stringify(fresh);
+            if (oldHash !== newHash) {
+              const notice = document.createElement('div');
+              notice.style.cssText = `
+                position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
+                background: #333; color: white; padding: 10px 20px; border-radius: 5px;
+                font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 9999;
+              `;
+              const btn = document.createElement('button');
+              btn.textContent = 'New products available. Click to refresh';
+              btn.style.cssText = `
+                background: #00c853; border: none; color: white; padding: 6px 12px;
+                margin-left: 10px; border-radius: 4px; cursor: pointer;
+              `;
+              btn.onclick = () => location.reload();
+              notice.appendChild(document.createTextNode('Update Available'));
+              notice.appendChild(btn);
+              document.body.appendChild(notice);
+            }
+          }
+        });
+      }
+
+      return data;
+    } else {
+      const fresh = await fetchFreshData();
+      data = fresh || [];
+      hideLoading();
+      return data;
     }
   }
 
   function renderProducts(products) {
     const list = document.getElementById('productList');
     list.innerHTML = '';
+
+    if (products.length === 0) {
+      list.innerHTML = '<p>No products found.</p>';
+      return;
+    }
+
     products.forEach((product, index) => {
       const card = document.createElement('div');
       card.className = 'product-card';
-      card.style.animationDelay = `${index * 50}ms`; // staggered fade-in
+      card.style.animationDelay = `${index * 50}ms`;
       card.innerHTML = `
         <img src="${product.image}" alt="${product.name}" class="product-image" />
         <h2>${product.name}</h2>
@@ -144,7 +193,8 @@
         <p>${product.description}</p>
         <p><strong>Rating:</strong> ${product.rating} / 5</p>
         <p><strong>Stock:</strong> ${product.stock}</p>
-        <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
+        <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? 
+          `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
       `;
       list.appendChild(card);
     });
@@ -169,7 +219,7 @@
         const filtered = searchProducts(data, e.target.value);
         renderProducts(filtered);
         hideLoading();
-      }, 300); // simulate delay for smooth UX
+      }, 300);
     });
   });
 
@@ -180,6 +230,7 @@
       .catch(err => console.error('Service Worker registration failed:', err));
   }
 </script>
+
 
 </body>
 </html>
