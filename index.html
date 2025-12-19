@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A.N. Stationery, Photocopy, Photo Studio and Gift center. Find writing instruments, art supplies, school supplies for kids, office essentials.">
+    <meta name="description" content="A.N. Stationery, Photocopy, Photo Studio and Gift center. Find writing instruments, art supplies, school supplies for kids, office essentials, reliable photocopy, photo services for everyday tasks.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -209,6 +209,135 @@ article:nth-child(3) { animation-delay: 0.3s; }
   }
 }
 
+
+        /* FAQ Section */
+.faq-section {
+  max-width: 1200px;
+  margin: 3.5rem auto;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* FAQ Heading */
+.faq-section h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+
+.faq-section h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #2563eb;
+  border-radius: 2px;
+  margin-top: 0.6rem;
+}
+
+/* FAQ Items */
+.faq-section details {
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.faq-section details:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Question */
+.faq-section summary {
+  padding: 1.1rem 3rem 1.1rem 1.4rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+
+/* Remove default marker */
+.faq-section summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Plus / Minus Icon */
+.faq-section summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #2563eb;
+  transition: transform 0.3s ease;
+}
+
+.faq-section details[open] summary::after {
+  content: "−";
+}
+
+/* Answer */
+.faq-section details p {
+  padding: 0 1.4rem 1.2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #334155;
+  animation: faqFade 0.3s ease;
+}
+
+/* Animation */
+@keyframes faqFade {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 2rem 1.6rem;
+  }
+
+  .faq-section summary {
+    font-size: 1rem;
+  }
+
+  .faq-section details p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .faq-section {
+    padding: 1.8rem 1.3rem;
+  }
+
+  .faq-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .faq-section summary {
+    padding-right: 2.6rem;
+  }
+}
+
         
         /* Utilities */
         .btn { display: inline-block; padding: 0.5rem 1rem; background: #000000; color: white; text-decoration: none; border-radius: 4px; }
@@ -395,6 +524,63 @@ article:nth-child(3) { animation-delay: 0.3s; }
         
         </div>
 
+<section class="faq-section">
+  <h2>Frequently Asked Questions (FAQ)</h2>
+
+  <details>
+    <summary>Where is A.N. Stationery located?</summary>
+    <p>
+      A.N. Stationery, Photocopy, Gift Center and Photo Studio is located in
+      Imadol, Mahalaxmi-4, Lalitpur, Nepal. We are easily accessible for students,
+      offices, and local residents.
+    </p>
+  </details>
+
+  <details>
+    <summary>What products are available at A.N. Stationery?</summary>
+    <p>
+      We offer a wide range of stationery products including notebooks, pens,
+      pencils, art and craft supplies, school stationery, office supplies, paper
+      products, school shoes, socks, and gift items.
+    </p>
+  </details>
+
+  <details>
+    <summary>What services do you provide?</summary>
+    <p>
+      Our services include photocopy, printing, lamination, document services,
+      passport-size photos, document photos, and instant photo printing through
+      our in-store photo studio.
+    </p>
+  </details>
+
+  <details>
+    <summary>Do you provide passport and document photos?</summary>
+    <p>
+      Yes, our photo studio in Imadol provides passport photos and official
+      document photos suitable for onlineforms, DVs, visas, job applications, exams, and IDs.
+    </p>
+  </details>
+
+  <details>
+    <summary>What are your opening hours?</summary>
+    <p>
+      A.N. Stationery is usually open from Sunday to Saturday, from 7:00 AM to
+      8:00 PM. Opening hours may vary on public holidays.
+    </p>
+  </details>
+
+  <details>
+    <summary>Do you offer affordable prices for students?</summary>
+    <p>
+      Yes, we focus on affordable pricing for students and families, with
+      stationery items starting from as low as NPR 5 while maintaining good
+      quality.
+    </p>
+  </details>
+</section>
+
+
 
     </main>
     
@@ -434,10 +620,62 @@ article:nth-child(3) { animation-delay: 0.3s; }
         ]
     }
     </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where is A.N. Stationery located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A.N. Stationery, Photocopy, Gift Center and Photo Studio is located in Imadol, Mahalaxmi-4, Lalitpur, Nepal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What products are available at A.N. Stationery?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer notebooks, pens, pencils, art and craft supplies, school stationery, office supplies, paper products, school shoes, socks, and gift items."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What services do you provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our services include photocopy, printing, lamination, document services, passport-size photos, and instant photo printing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide passport and document photos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we provide passport-size and official document photos suitable for online forms, DVs, visas, job applications, and exams."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are your opening hours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are usually open from Sunday to Saturday, 7:00 AM to 8:00 PM, except on some public holidays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer affordable prices for students?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we provide affordable stationery products starting from NPR 5, especially suitable for students and families."
+      }
+    }
+  ]
+}
+</script>
+
 </body>
 </html>
-
-
-
-
-
