@@ -212,7 +212,80 @@ article:nth-child(3) { animation-delay: 0.3s; }
         
         /* Utilities */
         .btn { display: inline-block; padding: 0.5rem 1rem; background: #000000; color: white; text-decoration: none; border-radius: 4px; }
-        
+
+
+/* About Store Section */
+.about-store {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Heading */
+.about-store h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1.2rem;
+  position: relative;
+  line-height: 1.3;
+}
+
+/* Decorative underline */
+.about-store h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #2563eb;
+  border-radius: 2px;
+  margin-top: 0.6rem;
+}
+
+/* Paragraphs */
+.about-store p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #334155;
+  margin-bottom: 1.1rem;
+}
+
+/* Highlight key words subtly */
+.about-store p strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Improve reading on large screens */
+@media (min-width: 768px) {
+  .about-store {
+    padding: 3rem 3.5rem;
+  }
+
+  .about-store p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+  .about-store {
+    padding: 2rem 1.5rem;
+  }
+
+  .about-store h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-store p {
+    font-size: 1rem;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -325,5 +398,6 @@ article:nth-child(3) { animation-delay: 0.3s; }
     </script>
 </body>
 </html>
+
 
 
