@@ -90,8 +90,12 @@ class SEOContent extends HTMLElement {
             <p>Pens (ink, bullet, gel, ball), pencils, markers, highlighters, brush pen, sign pen</p>
           </div>
           <div class="category-box">
+            <strong>Student and Teacher Accessories</strong>
+            <p>Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale</p>
+          </div>
+          <div class="category-box">
             <strong>Paper Products</strong>
-            <p>Notebooks (english, nepali, maths), copy papers, journals, sketchbooks, color papers, a4 papers, drawing papers, chart papers</p>
+            <p>Notebooks (english, nepali, maths), copy papers, journals, sketchbooks, color papers, a4 papers, drawing papers, chart papers, practical sheets, chemistry notebook</p>
           </div>
           <div class="category-box">
             <strong>Office Supplies</strong>
@@ -108,13 +112,23 @@ class SEOContent extends HTMLElement {
           </div>
         </div>
         <div class="category-box">
+            <strong>Household Accessories</strong>
+            <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, comb, tooth brush, shoe brush</p>
+          </div>
+        </div>
+        <div class="category-box">
+            <strong>Extra Accessories</strong>
+            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper</p>
+          </div>
+        </div>
+        <div class="category-box">
             <strong>Games</strong>
-            <p>Board and pieces (carrom, ludo, chess), Badminton, Cricket, Table tennis (bat and ball), Skipping, Hula hoop, Footballs (Soccer), Basketballs, Volleyballs</p>
+            <p>Board and pieces (carrom, ludo, chess), Badminton, Cricket, Table tennis (bat and ball), Skipping, Hula hoop, Footballs (Soccer), Basketballs, Volleyballs, Rubik's cube, UNO cards, pokemon cards, playing cards (poker), Babelet, Figid Spinner</p>
           </div>
         </div>
         <div class="category-box">
             <strong>Kids items and toys</strong>
-            <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls</p>
+            <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles</p>
           </div>
         </div>
         <div class="category-box">
