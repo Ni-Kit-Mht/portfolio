@@ -91,7 +91,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Student and Teacher Accessories</strong>
-            <p>Stick file, Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (Ruler), Compass, Study table, White Board, Engineering Drawing Pencils</p>
+            <p>Stick file, Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (Ruler), Compass, Study table, White Board, Engineering Drawing Pencils, ID card holders</p>
           </div>
           <div class="category-box">
             <strong>Paper Products</strong>
@@ -108,16 +108,16 @@ class SEOContent extends HTMLElement {
         
           <div class="category-box">
             <strong>School Accessories</strong>
-            <p>Shoes (Black, White), School bags, School Socks, Geometry box, Pencil (box, purse), White board</p>
+            <p>Shoes (Black, White), School bags, School Socks, Geometry box, Pencil (box, purse (plastic, cloth)), White board</p>
           </div>
           <div class="category-box">
             <strong>Household Accessories</strong>
-            <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, comb, tooth brush, shoe brush, water bottles, battery, ear buds, umbrella</p>
+            <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, perfume, lotion, room freshner, comb, tooth brush, shoe brush, water bottles, battery, ear buds, umbrella, fiber bags</p>
           </div>
         
           <div class="category-box">
             <strong>Extra Accessories</strong>
-            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Earphones</p>
+            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Earphones, Paper cutter blades</p>
           </div>
           <div class="category-box">
             <strong>Games</strong>
@@ -125,23 +125,27 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Kids items and toys</strong>
-            <p>Slime, Clay, Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles, stacking rings, legos, pretend-play game (bhadakuti)</p>
+            <p>Slime, Clay, Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, stacking rings, legos, pretend-play game (bhadakuti)</p>
           </div>
           <div class="category-box">
-            <strong>Gift items</strong>
-            <p>Clocks, Watches, Studying Gift Sets, Diary, Glassed gifts</p>
+            <strong>Gift and Party items</strong>
+            <p>Clocks, Watches, Studying Gift Sets, Diary, Glassed gifts, Party popper, Balloons, Candles</p>
           </div>
           <div class="category-box">
             <strong>Project materials</strong>
             <p>9V battery, fan, motor, LEDs, batter and motor connection wire, glue gun (small, bigger), glue sticks (thin, thick)</p>
           </div>
           <div class="category-box">
-            <strong>Printing and online services</strong>
-            <p>Frames for (a4 sized Photos, a4 sized Certificates), Scanning, Glossy Photo Printing, Plain paper printing (Color, Black and White), Photocopy (Color, Black and White), NID form</p>
+            <strong>Music and Instruments, Fitness</strong>
+            <p>Guitar strings, Capo, Pick, Handgrip, Exercise balls, Sponge balls</p>
           </div>
           <div class="category-box">
-            <strong>Other services</strong>
-            <p>Normal Tape Binding</p>
+            <strong>Printing and online services</strong>
+            <p>Frames for (a4 sized Photos, a4 sized Certificates), Scanning, Glossy Photo Printing, Plain paper printing (Color, Black and White), Photocopy (Color, Black and White), NID form, Free Wi-Fi for time being</p>
+          </div>
+          <div class="category-box">
+            <strong>Other services in Detail</strong>
+            <p>Normal Tape Binding upto 120 pages (70gsm paper), Lamination upto a4 size paper, Framing, Color (Printing, Photocopy) upto a4 size papers, Color Scanning upto a3 paper size, Black and White (Printing, Photocopy) upto a3 size papers, Glossy photo printing upto a4 size paper, Gift wrapping</p>
           </div>
 
         </div>
