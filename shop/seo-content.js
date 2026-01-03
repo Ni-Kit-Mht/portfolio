@@ -134,11 +134,11 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Gift and Party items</strong>
-            <p>Clocks, Watches, Studying Gift Sets, Diary, Glassed gifts, Party popper, Balloons, Candles</p>
+            <p>Clocks, Watches, Studying Gift Sets, Diary, Glassed gifts, Party popper, Balloons, General Birthday Candles</p>
           </div>
           <div class="category-box">
             <strong>Project materials</strong>
-            <p>9V battery, fan, motor, LEDs, batter and motor connection wire, glue gun (small, bigger), glue sticks (thin, thick), Lazer light, Magnets, Cut and Paste</p>
+            <p>9V battery, fan, motor, LEDs, batter and motor connection wire, glue gun (small, bigger), glue sticks (thin, thick), Lazer light, Magnets, Cut and Paste, Pendrive (4GB,8GB,16GB)</p>
           </div>
           <div class="category-box">
             <strong>Music and Instruments, Fitness</strong>
