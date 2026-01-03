@@ -91,7 +91,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Classroom items</strong>
-            <p>Eraser, Sharpner, Scientific Calculator (multi-functions), Eraser-sharpner (combined), White boards (various sizes), Study Tables, Duster, Protactor, Scale (metal, rubber, transparent Ruler), Compass, Stick file</p>
+            <p>Eraser, Sharpner, Scientific Calculator (multi-functions), Eraser-sharpner (combined), White boards (various sizes), Study Tables, Duster, Protactor, Scale (metal, rubber, transparent Ruler), Compass, Stick file, Sticky notes</p>
           </div>
           <div class="category-box">
             <strong>Student Accessories</strong>
@@ -108,7 +108,7 @@ class SEOContent extends HTMLElement {
         
           <div class="category-box">
             <strong>School Accessories for Students</strong>
-            <p>Shoes (Black, White), School bags, School Socks, Long Socks, Knee Socks, Stockings, Geometry box, Pencil (box, purse (plastic, cloth)), White board</p>
+            <p>Shoes (Black, White), School bags, School Socks, Long Socks, Knee Socks, Stockings, Geometry box, Pencil (box, purse (plastic, cloth)), White board, Covers (Book and Copy)</p>
           </div>
           <div class="category-box">
             <strong>Household and Store Accessories</strong>
@@ -121,7 +121,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Wearing Accessories</strong>
-            <p>Finger gloves, Gloves, Earphones, Rings, Necklace, Keychains, Hair Rubber bands, Hair clips, Face Masks (Kids, Adults)</p>
+            <p>Finger gloves, Gloves, Earphones, Finger Rings, Necklace, Keychains, Hair Rubber bands, Hair clips, Face Masks (Kids, Adults)</p>
           </div>
           
           <div class="category-box">
@@ -130,7 +130,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Kids items and toys</strong>
-            <p>Slime, Clay, Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, stacking rings, legos, pretend-play game (bhadakuti), coloring books, charts (alphabet, number, animals)</p>
+            <p>Slime, Clay, Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, stacking rings, legos, pretend-play game (bhadakuti), coloring books, charts (alphabet, number, animals), Magic balls, Goggles (Swimming, Sun)</p>
           </div>
           <div class="category-box">
             <strong>Gift and Party items</strong>
@@ -156,6 +156,11 @@ class SEOContent extends HTMLElement {
           <div class="category-box">
             <strong>Other services in Detail</strong>
             <p>Simple Photo Studio, Normal Tape Binding upto thickness of about 120 pages of 70gsm paper, Lamination upto a4 size paper, Framing, Color (Printing, Photocopy) upto a4 size papers, Color Scanning upto a3 paper size, Black and White (Printing, Photocopy) upto a3 size papers, Glossy photo printing upto a4 size paper, Gift wrapping, Recharge cards (Ncell, NTC)</p>
+          </div>
+          
+          <div class="category-box">
+            <strong>Handy Items (Avaliable upon request)</strong>
+            <p>Measuring Tape, Gun Thread, Bundles of Rubber bands, Ball of Rubber bands (Chungi), Marbles</p>
           </div>
 
         </div>
