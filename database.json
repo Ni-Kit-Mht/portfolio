@@ -452,10 +452,10 @@
 },
   {
   "id": "P029",
-  "name": "Black/Red Polish",
+  "name": "Black/Brown Polish",
   "price": "50",
   "description": "Shine your shoes with polish",
-  "image": "Images/black-red--shoes-polish.jpg",
+  "image": "Images/black-brown-shoes-polish.jpg",
   "product_type": "Stationery",
   "category": "Footware accessories",
   "popularity": 76,
@@ -464,7 +464,7 @@
   "available_soon": false,
   "stock": 10,
   "estimated_days_to_availability": 0,
-  "tags": ["black polish", "polish", "red polish", "stationery"]
+  "tags": ["black polish", "polish", "brown polish", "stationery"]
 }
 
 ]
