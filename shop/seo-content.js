@@ -87,11 +87,15 @@ class SEOContent extends HTMLElement {
         <div class="product-categories">
           <div class="category-box">
             <strong>Writing Instruments</strong>
-            <p>Pens (magic, ink, bullet, gel, ball, pilot, roller), pencils (lead, pen, normal, magic), markers, highlighters, brush pen, sign pen</p>
+            <p>Pens (magic, ink, bullet, gel, ball, pilot, roller), pencils (lead, pen, normal, magic, engineering drawing), markers, highlighters, brush pen, sign pen</p>
           </div>
           <div class="category-box">
-            <strong>Student and Teacher Accessories</strong>
-            <p>Stick file, Refill, Ink pot, Bullet ink packets, Lead-pencil lead, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (metal, rubber, transparent Ruler), Compass, Study table, White Board, Engineering Drawing Pencils, ID card holders</p>
+            <strong>Classroom items</strong>
+            <p>Eraser, Sharpner, Scientific Calculator (multi-functions), Eraser-sharpner (combined), White boards (various sizes), Study Tables, Duster, Protactor, Scale (metal, rubber, transparent Ruler), Compass, Stick file</p>
+          </div>
+          <div class="category-box">
+            <strong>Student Accessories</strong>
+            <p>Certificate bag (display file), Refill, Ink pot, Bullet ink packets, Lead-pencil lead, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, ID card holders</p>
           </div>
           <div class="category-box">
             <strong>Paper Products</strong>
@@ -111,8 +115,8 @@ class SEOContent extends HTMLElement {
             <p>Shoes (Black, White), School bags, School Socks, Long Socks, Knee Socks, Stockings, Geometry box, Pencil (box, purse (plastic, cloth)), White board</p>
           </div>
           <div class="category-box">
-            <strong>Household Accessories</strong>
-            <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, perfume, lotion, room freshner, comb, tooth brush, shoe brush, water bottles, battery, ear buds, umbrella, fiber bags</p>
+            <strong>Household and Store Accessories</strong>
+            <p>Wall Hanger hooks, fevikwik, super glue, soap, shampoo, perfume, lotion, room freshner, comb, tooth brush, shoe brush, water bottles, battery, ear buds, umbrella, fiber bags, Normal Calculator</p>
           </div>
         
           <div class="category-box">
@@ -121,7 +125,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Wearing Accessories</strong>
-            <p>Finger gloves, Gloves, Earphones, Rings, Necklace, Keychains, Hair Rubber bands, Hair clips, Face Masks</p>
+            <p>Finger gloves, Gloves, Earphones, Rings, Necklace, Keychains, Hair Rubber bands, Hair clips, Face Masks (Kids, Adults)</p>
           </div>
           
           <div class="category-box">
@@ -150,7 +154,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Other services in Detail</strong>
-            <p>Simple Photo Studio, Normal Tape Binding upto 120 pages (70gsm paper), Lamination upto a4 size paper, Framing, Color (Printing, Photocopy) upto a4 size papers, Color Scanning upto a3 paper size, Black and White (Printing, Photocopy) upto a3 size papers, Glossy photo printing upto a4 size paper, Gift wrapping, Recharge cards</p>
+            <p>Simple Photo Studio, Normal Tape Binding upto thickness of about 120 pages of 70gsm paper, Lamination upto a4 size paper, Framing, Color (Printing, Photocopy) upto a4 size papers, Color Scanning upto a3 paper size, Black and White (Printing, Photocopy) upto a3 size papers, Glossy photo printing upto a4 size paper, Gift wrapping, Recharge cards (Ncell, NTC)</p>
           </div>
 
         </div>
