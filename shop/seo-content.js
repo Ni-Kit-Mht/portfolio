@@ -106,40 +106,32 @@ class SEOContent extends HTMLElement {
             <p>Colors (poster, water, febric), brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk</p>
           </div>
         
-        <div class="category-box">
+          <div class="category-box">
             <strong>School Accessories</strong>
             <p>Shoes (Black, White), School bags, School Socks, Geometry box, Pencil (box, purse), White board</p>
           </div>
-        </div>
-        <div class="category-box">
+          <div class="category-box">
             <strong>Household Accessories</strong>
             <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, comb, tooth brush, shoe brush</p>
           </div>
-        </div>
-        <div class="category-box">
+        
+          <div class="category-box">
             <strong>Extra Accessories</strong>
             <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper</p>
           </div>
-        </div>
-        <div class="category-box">
+          <div class="category-box">
             <strong>Games</strong>
             <p>Board and pieces (carrom, ludo, chess), Badminton, Cricket, Table tennis (bat and ball), Skipping, Hula hoop, Footballs (Soccer), Basketballs, Volleyballs, Rubik's cube, UNO cards, pokemon cards, playing cards (poker), Babelet, Figid Spinner</p>
           </div>
-        </div>
-        <div class="category-box">
+          <div class="category-box">
             <strong>Kids items and toys</strong>
             <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles</p>
           </div>
-        </div>
-        <div class="category-box">
+          <div class="category-box">
             <strong>Project materials</strong>
             <p>9V battery, fan, motor, LEDs, batter and motor connection wire</p>
           </div>
         </div>
-
-        
-        </div>
-
         <h3>Why Choose A.N. Stationery?</h3>
         <ul>
           <li><strong>Quality Products:</strong> We source premium stationery items from trusted brands to ensure durability and performance</li>
