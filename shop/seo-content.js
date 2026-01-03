@@ -176,7 +176,7 @@ class SEOContent extends HTMLElement {
         <p>
           <em>
             Looking for stationery in Nepal? A.N. Stationery offers notebooks, pens, office supplies, school materials, 
-            art supplies, and more. Shop quality stationery products online in Kathmandu, Nepal. Best prices on 
+            art supplies, and more. Shop quality stationery products online in Lalitpur, Nepal. Best prices on 
             writing instruments, paper products, and office equipment.
           </em>
         </p>
