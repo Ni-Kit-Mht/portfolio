@@ -87,21 +87,43 @@ class SEOContent extends HTMLElement {
         <div class="product-categories">
           <div class="category-box">
             <strong>Writing Instruments</strong>
-            <p>Pens, pencils, markers, highlighters</p>
+            <p>Pens (ink, bullet, gel, ball), pencils, markers, highlighters, brush pen, sign pen</p>
           </div>
           <div class="category-box">
             <strong>Paper Products</strong>
-            <p>Notebooks, copy papers, journals</p>
+            <p>Notebooks (english, nepali, maths), copy papers, journals, sketchbooks, color papers, a4 papers, drawing papers, chart papers</p>
           </div>
           <div class="category-box">
             <strong>Office Supplies</strong>
-            <p>Files, folders, staplers, clips</p>
+            <p>Files, folders, staplers and pins, clips (paper, plastic), pins (thumb, push), papers (a4, a3), bill pads (single, double), ledger, day book, attendance book, cash book, stock book, registers</p>
           </div>
           <div class="category-box">
             <strong>Art Supplies</strong>
-            <p>Colors, brushes, canvas, craft items</p>
+            <p>Colors (poster, water, febric), brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk</p>
           </div>
         </div>
+        <div class="category-box">
+            <strong>School Accessories</strong>
+            <p>Shoes (Black, White), School bags, School Socks, Geometry box, Pencil (box, purse), White board</p>
+          </div>
+        </div>
+        <div class="category-box">
+            <strong>Games</strong>
+            <p>Board and pieces (carrom, ludo, chess), Badminton, Cricket, Table tennis (bat and ball), Skipping, Hula hoop, Footballs (Soccer), Basketballs, Volleyballs</p>
+          </div>
+        </div>
+        <div class="category-box">
+            <strong>Kids items and toys</strong>
+            <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls</p>
+          </div>
+        </div>
+        
+        <div class="category-box">
+            <strong>Project materials</strong>
+            <p>9V battery, fan, motor, LEDs, batter and motor connection wire</p>
+          </div>
+        </div>
+
         
         <h3>Why Choose A.N. Stationery?</h3>
         <ul>
@@ -115,7 +137,7 @@ class SEOContent extends HTMLElement {
         <div class="location-info">
           <h3>Serving Nepal with Quality Stationery</h3>
           <p>
-            Based in <strong>Kathmandu, Nepal</strong>, A.N. Stationery has been serving customers across the nation 
+            Based in <strong>Imadol, Lalitpur, Nepal</strong>, A.N. Stationery has been serving customers across the nation 
             with reliable stationery solutions. We understand the needs of Nepali students, professionals, and businesses, 
             offering products that combine international quality with local accessibility.
           </p>
