@@ -1,7 +1,7 @@
 [
   {
     "id": "P001",
-    "name": "Calatrix HB Pencil",
+    "name": "Caltrix HB Pencil",
     "price": "15",
     "description": "Classic HB pencil suitable for writing and sketching. Smooth graphite and durable wood.",
     "image": "Images/calatrix-pencil-hb.jpg",
@@ -165,7 +165,7 @@
   {
     "id": "P011",
     "name": "School Shoes (Black)",
-    "price": "500",
+    "price": "500-950",
     "description": "Comfortable and durable school shoes in various sizes. Ideal for daily school wear.",
     "image": "Images/black-school-shoes.jpg",
     "product_type": "School Shoes & Socks",
@@ -418,6 +418,22 @@
   "estimated_days_to_availability": 0,
   "tags": ["chart", "paper", "craft", "stationery"]
 },
+      {
+    "id": "P028",
+    "name": "School Shoes (White)",
+    "price": "500-700",
+    "description": "Comfortable and durable school shoes in various sizes. Ideal for daily school wear.",
+    "image": "Images/white-school-shoes.jpg",
+    "product_type": "School Shoes & Socks",
+    "category": "Comfortable school shoes",
+    "popularity": 81,
+    "rating": 4.1,
+    "available": true,
+    "available_soon": false,
+    "stock": 59,
+    "estimated_days_to_availability": 0,
+    "tags": ["shoes", "uniform", "school"]
+  },
 {
   "id": "P027",
   "name": "Colourful A4 Papers",
@@ -433,6 +449,22 @@
   "stock": 110,
   "estimated_days_to_availability": 0,
   "tags": ["a4", "colourful", "paper", "stationery"]
+},
+  {
+  "id": "P029",
+  "name": "Black/Red Polish",
+  "price": "50",
+  "description": "Shine your shoes with polish",
+  "image": "Images/black-red--shoes-polish.jpg",
+  "product_type": "Stationery",
+  "category": "Footware accessories",
+  "popularity": 76,
+  "rating": 4.4,
+  "available": true,
+  "available_soon": false,
+  "stock": 10,
+  "estimated_days_to_availability": 0,
+  "tags": ["black polish", "polish", "red polish", "stationery"]
 }
 
 ]
