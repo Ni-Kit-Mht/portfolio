@@ -98,7 +98,11 @@
   <script src="https://nikitmehta.com.np/footer.js" defer></script>
 
 <script nonce="r4nd0mStr1ng">
-  const DB_URL = 'https://nikitmehta.com.np/database.json';
+  const DB_URLS = [
+    'https://nikitmehta.com.np/database.json',
+    'https://nikitmehta.com.np/database1.json',
+    'https://nikitmehta.com.np/database2.json'
+  ];
   const CACHE_TTL_MS = 1 * 24 * 60 * 60 * 1000; // 1 day
   const ITEMS_PER_PAGE = 9;
   let currentPage = 1;
@@ -114,9 +118,11 @@
 
   async function fetchFreshData() {
     try {
-      const res = await fetch(DB_URL);
-      if (!res.ok) throw new Error('Failed to fetch database.json');
-      const data = await res.json();
+      const promises = DB_URLS.map(url => 
+        fetch(url).then(res => res.ok ? res.json() : []).catch(() => [])
+      );
+      const results = await Promise.all(promises);
+      const data = results.flat();
       localStorage.setItem('productData', JSON.stringify(data));
       localStorage.setItem('productData_ts', Date.now().toString());
       return data;
