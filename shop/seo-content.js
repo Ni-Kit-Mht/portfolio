@@ -117,11 +117,16 @@ class SEOContent extends HTMLElement {
         
           <div class="category-box">
             <strong>Extra Accessories</strong>
-            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Earphones, Paper cutter blades</p>
+            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Paper cutter blades, Keys and Locks</p>
           </div>
           <div class="category-box">
+            <strong>Wearing Accessories</strong>
+            <p>Finger gloves, Gloves, Earphones, Rings, Necklace, Keychains, Hair Rubber bands, Hair clips, Face Masks</p>
+          </div>
+          
+          <div class="category-box">
             <strong>Games</strong>
-            <p>Board and pieces (carrom, ludo, chess), Badminton, Cricket, Table tennis (bat and ball), Skipping, Hula hoop, Footballs (Soccer), Basketballs, Volleyballs, Rubik's cube, UNO cards, pokemon cards, playing cards (poker), Babelet, Figid Spinner</p>
+            <p>Board and pieces (carrom, ludo, chess), Badminton, Cricket bat, Tennis balls, Table tennis (bat and ball), Skipping, Hula hoop, Footballs (Soccer), Basketballs, Volleyballs, Olympic Balls, Rubik's cube, UNO cards, pokemon cards, playing cards (poker), Beyblade, Fidget Spinner</p>
           </div>
           <div class="category-box">
             <strong>Kids items and toys</strong>
@@ -141,11 +146,11 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Printing and online services</strong>
-            <p>Frames for (a4 sized Photos, a4 sized Certificates), Scanning, Glossy Photo Printing, Plain paper printing (Color, Black and White), Photocopy (Color, Black and White), NID form, Free Wi-Fi for time being</p>
+            <p>Frames for (a4 sized Photos, a4 sized Certificates), Scanning, Glossy Photo Printing, Plain paper printing (Color, Black and White), Photocopy (Color, Black and White), NID form, Free Wi-Fi for time being, Esewa, Electricity Bill Payments, SIM cards (Ncell, NTC)</p>
           </div>
           <div class="category-box">
             <strong>Other services in Detail</strong>
-            <p>Normal Tape Binding upto 120 pages (70gsm paper), Lamination upto a4 size paper, Framing, Color (Printing, Photocopy) upto a4 size papers, Color Scanning upto a3 paper size, Black and White (Printing, Photocopy) upto a3 size papers, Glossy photo printing upto a4 size paper, Gift wrapping</p>
+            <p>Normal Tape Binding upto 120 pages (70gsm paper), Lamination upto a4 size paper, Framing, Color (Printing, Photocopy) upto a4 size papers, Color Scanning upto a3 paper size, Black and White (Printing, Photocopy) upto a3 size papers, Glossy photo printing upto a4 size paper, Gift wrapping, Recharge cards</p>
           </div>
 
         </div>
