@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Capture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        #video {
+            width: 100%;
+            max-width: 640px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        #canvas {
+            display: none;
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 15px 40px;
+            font-size: 18px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        .error {
+            color: #ff6b6b;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Camera Capture</h1>
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+    <button id="capture">Capture Photo</button>
+    <p id="error" class="error"></p>
 
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const captureBtn = document.getElementById('capture');
+        const errorMsg = document.getElementById('error');
+        
+        // Access camera on page load
+        navigator.mediaDevices.getUserMedia({ 
+            video: { facingMode: 'environment' } 
+        })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            errorMsg.textContent = 'Error accessing camera: ' + err.message;
+            console.error('Camera error:', err);
+        });
+        
+        // Capture photo
+        captureBtn.addEventListener('click', () => {
+            // Set canvas dimensions to match video
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            // Draw video frame to canvas
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+            
+            // Show prompt with default filename
+            const filename = prompt('Save as:', 'product.jpg');
+            
+            if (filename) {
+                // Ensure .jpg extension
+                let finalFilename = filename;
+                if (!finalFilename.toLowerCase().endsWith('.jpg')) {
+                    finalFilename += '.jpg';
+                }
+                
+                // Convert canvas to blob and download
+                canvas.toBlob(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = finalFilename;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                }, 'image/jpeg', 0.95);
+            }
+        });
+    </script>
+</body>
+</html>
