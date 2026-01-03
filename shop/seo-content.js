@@ -101,7 +101,7 @@ class SEOContent extends HTMLElement {
             <strong>Art Supplies</strong>
             <p>Colors (poster, water, febric), brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk</p>
           </div>
-        </div>
+        
         <div class="category-box">
             <strong>School Accessories</strong>
             <p>Shoes (Black, White), School bags, School Socks, Geometry box, Pencil (box, purse), White board</p>
@@ -117,7 +117,6 @@ class SEOContent extends HTMLElement {
             <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls</p>
           </div>
         </div>
-        
         <div class="category-box">
             <strong>Project materials</strong>
             <p>9V battery, fan, motor, LEDs, batter and motor connection wire</p>
@@ -125,6 +124,8 @@ class SEOContent extends HTMLElement {
         </div>
 
         
+        </div>
+
         <h3>Why Choose A.N. Stationery?</h3>
         <ul>
           <li><strong>Quality Products:</strong> We source premium stationery items from trusted brands to ensure durability and performance</li>
@@ -163,13 +164,6 @@ class SEOContent extends HTMLElement {
           Businesses and professionals can rely on A.N. Stationery for their office supply needs. We offer corporate 
           stationery, filing systems, presentation materials, and organizational tools that help maintain productive 
           workspaces.
-        </p>
-        
-        <h3>Shop Online - Easy and Convenient</h3>
-        <p>
-          Our user-friendly online shop allows you to browse products at your convenience. Check real-time stock 
-          availability, compare ratings, and view detailed product information. Our inventory is regularly updated 
-          to ensure accurate availability information.
         </p>
         
         <h3>Keywords: Stationery Nepal, Office Supplies Kathmandu</h3>
