@@ -87,11 +87,11 @@ class SEOContent extends HTMLElement {
         <div class="product-categories">
           <div class="category-box">
             <strong>Writing Instruments</strong>
-            <p>Pens (ink, bullet, gel, ball), pencils, markers, highlighters, brush pen, sign pen</p>
+            <p>Pens (ink, bullet, gel, ball, pilot, roller), pencils, markers, highlighters, brush pen, sign pen</p>
           </div>
           <div class="category-box">
             <strong>Student and Teacher Accessories</strong>
-            <p>Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale</p>
+            <p>Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale, Study table</p>
           </div>
           <div class="category-box">
             <strong>Paper Products</strong>
@@ -103,7 +103,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Art Supplies</strong>
-            <p>Colors (poster, water, febric), brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk</p>
+            <p>Colors (poster, water, febric), brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk, Scissors, Paper cutters</p>
           </div>
         
           <div class="category-box">
@@ -125,7 +125,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Kids items and toys</strong>
-            <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles</p>
+            <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles, stacking rings</p>
           </div>
           <div class="category-box">
             <strong>Project materials</strong>
