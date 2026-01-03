@@ -117,7 +117,7 @@ class SEOContent extends HTMLElement {
         
           <div class="category-box">
             <strong>Extra Accessories</strong>
-            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Paper cutter blades, Keys and Locks</p>
+            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Paper cutter blades, Keys and Locks, Tissue Paper, Toilet Paper</p>
           </div>
           <div class="category-box">
             <strong>Wearing Accessories</strong>
@@ -130,11 +130,11 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Kids items and toys</strong>
-            <p>Slime, Clay, Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, stacking rings, legos, pretend-play game (bhadakuti), coloring books, charts (alphabet, number, animals), Magic balls, Goggles (Swimming, Sun)</p>
+            <p>Whistle, Slime, Clay, Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, stacking rings, legos, pretend-play game (bhadakuti), coloring books, charts (alphabet, number, animals), Magic balls, Goggles (Swimming, Sun)</p>
           </div>
           <div class="category-box">
             <strong>Gift and Party items</strong>
-            <p>Clocks, Watches, Studying Gift Sets, Diary, Glassed gifts, Party popper, Balloons, General Birthday Candles</p>
+            <p>Cermamic Items, Clocks, Watches, Studying Gift Sets, Diary, Glassed gifts, Party popper, Balloons, General Birthday Candles, Hat</p>
           </div>
           <div class="category-box">
             <strong>Project materials</strong>
