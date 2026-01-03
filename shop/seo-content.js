@@ -91,7 +91,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Student and Teacher Accessories</strong>
-            <p>Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (Ruler), Compass, Study table, White Board, Engineering Drawing Pencils</p>
+            <p>Stick file, Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (Ruler), Compass, Study table, White Board, Engineering Drawing Pencils</p>
           </div>
           <div class="category-box">
             <strong>Paper Products</strong>
@@ -125,7 +125,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Kids items and toys</strong>
-            <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles, stacking rings, legos, pretend-play game (bhadakuti)</p>
+            <p>Slime, Clay, Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles, stacking rings, legos, pretend-play game (bhadakuti)</p>
           </div>
           <div class="category-box">
             <strong>Gift items</strong>
@@ -133,7 +133,15 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Project materials</strong>
-            <p>9V battery, fan, motor, LEDs, batter and motor connection wire</p>
+            <p>9V battery, fan, motor, LEDs, batter and motor connection wire, glue gun (small, bigger), glue sticks (thin, thick)</p>
+          </div>
+          <div class="category-box">
+            <strong>Printing and online services</strong>
+            <p>Frames for (a4 sized Photos, a4 sized Certificates), Scanning, Glossy Photo Printing, Plain paper printing (Color, Black and White), Photocopy (Color, Black and White), NID form</p>
+          </div>
+          <div class="category-box">
+            <strong>Other services</strong>
+            <p>Normal Tape Binding</p>
           </div>
 
         </div>
