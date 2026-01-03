@@ -87,28 +87,28 @@ class SEOContent extends HTMLElement {
         <div class="product-categories">
           <div class="category-box">
             <strong>Writing Instruments</strong>
-            <p>Pens (ink, bullet, gel, ball, pilot, roller), pencils, markers, highlighters, brush pen, sign pen</p>
+            <p>Pens (magic, ink, bullet, gel, ball, pilot, roller), pencils (lead, pen, normal, magic), markers, highlighters, brush pen, sign pen</p>
           </div>
           <div class="category-box">
             <strong>Student and Teacher Accessories</strong>
-            <p>Stick file, Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (Ruler), Compass, Study table, White Board, Engineering Drawing Pencils, ID card holders</p>
+            <p>Stick file, Refill, Ink pot, Bullet ink packets, Lead-pencil lead, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (metal, rubber, transparent Ruler), Compass, Study table, White Board, Engineering Drawing Pencils, ID card holders</p>
           </div>
           <div class="category-box">
             <strong>Paper Products</strong>
-            <p>Notebooks (english, nepali, maths, drawing, science), copy papers, loose sheets, journals, sketchbooks, color papers, glitter paper, a4 papers, drawing papers, chart papers, practical sheets, chemistry notebook</p>
+            <p>Notebooks (english, nepali, maths, drawing, science), copy papers, loose sheets, journals, sketchbooks, color papers, glitter paper, a4 papers, drawing papers, chart papers, practical sheets, chemistry notebook, Envelope (Kham, a3, a4, 4x6, 3x5, small)</p>
           </div>
           <div class="category-box">
             <strong>Office Supplies</strong>
-            <p>Files (Record, 2 ring, display), folders, tray, staplers and pins, clips (paper, plastic), pins (thumb, push), carbon paper, papers (a4, a3), bill pads (single, double), ledger, day book, attendance book, cash book, stock book, registers</p>
+            <p>Clear Bag (cheap to expensive), Files (Record, 2 ring, display), folders, tray, staplers and pins, clips (paper, plastic), pins (thumb, push), carbon paper, papers (a4, a3), bill pads (single, double), ledger, day book, attendance book, cash book, stock book, registers</p>
           </div>
           <div class="category-box">
             <strong>Art Supplies</strong>
-            <p>Colors (poster, water, febric), brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk, Scissors, Paper cutters</p>
+            <p>Colors (poster, water, febric), brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk, Scissors, Paper cutters, Glue, Glue Stick, Fevicol</p>
           </div>
         
           <div class="category-box">
             <strong>School Accessories</strong>
-            <p>Shoes (Black, White), School bags, School Socks, Geometry box, Pencil (box, purse (plastic, cloth)), White board</p>
+            <p>Shoes (Black, White), School bags, School Socks, Long Socks, Knee Socks, Stockings, Geometry box, Pencil (box, purse (plastic, cloth)), White board</p>
           </div>
           <div class="category-box">
             <strong>Household Accessories</strong>
@@ -138,7 +138,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Project materials</strong>
-            <p>9V battery, fan, motor, LEDs, batter and motor connection wire, glue gun (small, bigger), glue sticks (thin, thick)</p>
+            <p>9V battery, fan, motor, LEDs, batter and motor connection wire, glue gun (small, bigger), glue sticks (thin, thick), Lazer light</p>
           </div>
           <div class="category-box">
             <strong>Music and Instruments, Fitness</strong>
@@ -150,7 +150,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Other services in Detail</strong>
-            <p>Normal Tape Binding upto 120 pages (70gsm paper), Lamination upto a4 size paper, Framing, Color (Printing, Photocopy) upto a4 size papers, Color Scanning upto a3 paper size, Black and White (Printing, Photocopy) upto a3 size papers, Glossy photo printing upto a4 size paper, Gift wrapping, Recharge cards</p>
+            <p>Simple Photo Studio, Normal Tape Binding upto 120 pages (70gsm paper), Lamination upto a4 size paper, Framing, Color (Printing, Photocopy) upto a4 size papers, Color Scanning upto a3 paper size, Black and White (Printing, Photocopy) upto a3 size papers, Glossy photo printing upto a4 size paper, Gift wrapping, Recharge cards</p>
           </div>
 
         </div>
