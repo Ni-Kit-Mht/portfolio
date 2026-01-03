@@ -91,7 +91,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Student and Teacher Accessories</strong>
-            <p>Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale, Study table</p>
+            <p>Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (Ruler), Compass, Study table</p>
           </div>
           <div class="category-box">
             <strong>Paper Products</strong>
@@ -99,7 +99,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Office Supplies</strong>
-            <p>Files, folders, staplers and pins, clips (paper, plastic), pins (thumb, push), papers (a4, a3), bill pads (single, double), ledger, day book, attendance book, cash book, stock book, registers</p>
+            <p>Files (Record, 2 ring, display), folders, tray, staplers and pins, clips (paper, plastic), pins (thumb, push), carbon paper, papers (a4, a3), bill pads (single, double), ledger, day book, attendance book, cash book, stock book, registers</p>
           </div>
           <div class="category-box">
             <strong>Art Supplies</strong>
@@ -112,12 +112,12 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Household Accessories</strong>
-            <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, comb, tooth brush, shoe brush</p>
+            <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, comb, tooth brush, shoe brush, water bottles, battery, ear buds</p>
           </div>
         
           <div class="category-box">
             <strong>Extra Accessories</strong>
-            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper</p>
+            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Earphones</p>
           </div>
           <div class="category-box">
             <strong>Games</strong>
@@ -128,9 +128,14 @@ class SEOContent extends HTMLElement {
             <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles, stacking rings</p>
           </div>
           <div class="category-box">
+            <strong>Gift items</strong>
+            <p>Clocks, Watches, Studying Gift Sets, Diary, Glassed gifts</p>
+          </div>
+          <div class="category-box">
             <strong>Project materials</strong>
             <p>9V battery, fan, motor, LEDs, batter and motor connection wire</p>
           </div>
+
         </div>
         <h3>Why Choose A.N. Stationery?</h3>
         <ul>
