@@ -98,16 +98,12 @@ class SEOContent extends HTMLElement {
             <p>Clear Bag (cheap to expensive), Certificate bag (display file), Refill, Ink pot, Bullet ink packets, Lead-pencil lead, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, ID card holders</p>
           </div>
           <div class="category-box">
-            <strong>Paper Products</strong>
-            <p>Notebooks (english, nepali, maths, drawing, science), copy papers, loose sheets, journals, sketchbooks, color papers, glitter paper, a4 papers (70gsm, 80gsm, 100gsm), a3 paper (70gsm), drawing papers, chart papers, practical sheets, chemistry notebook, Envelope (Kham, a3, a4, 4x6, 3x5, small)</p>
-          </div>
-          <div class="category-box">
             <strong>Office Supplies</strong>
             <p>Stamp Pad, Files (Record, 2 ring, display), folders, office trays, staplers and pins, clips (paper, plastic), pins (thumb, push), carbon paper, papers (a4, a3), bill pads (single, double), ledger, day book, attendance book, cash book, stock book, registers</p>
           </div>
           <div class="category-box">
             <strong>Art Supplies</strong>
-            <p>Colors (poster, water, febric), brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk, Scissors, Paper cutters, Glue, Glue Stick, Fevicol, Glitter</p>
+            <p>Colors (poster, water, febric), Glitter, brushes, canvas, palets, craft items, cardboards, crayons, colorful markers, colorful sign pens, pencil colors, chalk, Scissors, Paper cutters, Glue, Glue Stick, Fevicol, Glitter a4 paper, Colorful A4 Papers</p>
           </div>
         
           <div class="category-box">
@@ -151,6 +147,11 @@ class SEOContent extends HTMLElement {
           <div class="category-box">
             <strong>Printing and online services</strong>
             <p>Frames for (a4 sized Photos, a4 sized Certificates), Scanning, Glossy Photo Printing, Plain paper printing (Color, Black and White), Photocopy (Color, Black and White), NID form, Free Wi-Fi for time being, Esewa, Electricity Bill Payments, SIM cards (Ncell, NTC)</p>
+          </div>
+          
+          <div class="category-box">
+            <strong>Paper Products</strong>
+            <p>Notebooks/Copy (english, nepali, maths, drawing, science, graph), copy papers (rough/fair), loose sheets, sketchbooks, a4 papers (70gsm, 80gsm, 100gsm), a3 paper (70gsm), drawing papers, news printing paper, chart papers, practical sheets, chemistry notebook, Envelope (Kham, a3, a4, 4x6, 3x5, small), Journal Voucher, Budget Sheet, Statement of Expenditure, Bank Cashbook</p>
           </div>
           <div class="category-box">
             <strong>Other services in Detail</strong>
