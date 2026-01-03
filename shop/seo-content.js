@@ -91,11 +91,11 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Student and Teacher Accessories</strong>
-            <p>Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (Ruler), Compass, Study table</p>
+            <p>Refill, Ink pot, Bullet ink packets, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, Duster, Protactor, Scale (Ruler), Compass, Study table, White Board, Engineering Drawing Pencils</p>
           </div>
           <div class="category-box">
             <strong>Paper Products</strong>
-            <p>Notebooks (english, nepali, maths), copy papers, journals, sketchbooks, color papers, a4 papers, drawing papers, chart papers, practical sheets, chemistry notebook</p>
+            <p>Notebooks (english, nepali, maths, drawing, science), copy papers, loose sheets, journals, sketchbooks, color papers, glitter paper, a4 papers, drawing papers, chart papers, practical sheets, chemistry notebook</p>
           </div>
           <div class="category-box">
             <strong>Office Supplies</strong>
@@ -112,7 +112,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Household Accessories</strong>
-            <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, comb, tooth brush, shoe brush, water bottles, battery, ear buds</p>
+            <p>Sticky Hanger pins, fevikwik, super glue, soap, shampoo, comb, tooth brush, shoe brush, water bottles, battery, ear buds, umbrella</p>
           </div>
         
           <div class="category-box">
@@ -125,7 +125,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Kids items and toys</strong>
-            <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles, stacking rings</p>
+            <p>Bubbles, Remote control cars, balloons, small toys (cars, trucks, bikes, dozer), battery toys (Dancing monkey, cars), dolls, helicopter, birthday candles, stacking rings, legos, pretend-play game (bhadakuti)</p>
           </div>
           <div class="category-box">
             <strong>Gift items</strong>
