@@ -24,6 +24,7 @@ const CACHE_TTL_MS = 1 * 24 * 60 * 60 * 1000; // 1 day
 const ITEMS_PER_PAGE = 9;
 let currentPage = 1;
 let filteredData = [];
+let allData = [];
 
 function showLoading() {
   document.getElementById('loading').style.display = 'block';
@@ -46,7 +47,7 @@ async function fetchFirebaseData() {
       return [];
     }
   } catch (error) {
-    console.warn('[Firebase] Failed to fetch, continuing with JSON only:', error.message);
+    console.warn('[Firebase] Failed to fetch:', error.message);
     return [];
   }
 }
@@ -57,67 +58,20 @@ async function fetchJSONData() {
       fetch(url)
         .then(res => {
           if (res.ok) {
-            console.log(`[JSON] Successfully fetched ${url}`);
+            console.log(`[JSON] ✓ Loaded ${url}`);
             return res.json();
           }
-          console.warn(`[JSON] Failed to fetch ${url}`);
           return [];
         })
-        .catch(err => {
-          console.warn(`[JSON] Error fetching ${url}:`, err.message);
-          return [];
-        })
+        .catch(() => [])
     );
     const results = await Promise.all(promises);
     const flatResults = results.flat();
-    console.log(`[JSON] Total products loaded: ${flatResults.length}`);
+    console.log(`[JSON] Total products: ${flatResults.length}`);
     return flatResults;
   } catch (err) {
-    console.error('[JSON Fetch] Critical error:', err);
+    console.error('[JSON] Error:', err);
     return [];
-  }
-}
-
-async function fetchFreshData() {
-  try {
-    // Always fetch JSON data first (primary source)
-    console.log('[Fetch] Loading JSON databases...');
-    const jsonData = await fetchJSONData();
-    
-    // Try to fetch Firebase data (supplementary source)
-    console.log('[Fetch] Attempting Firebase fetch...');
-    const firebaseData = await fetchFirebaseData();
-    
-    // Merge data: JSON is base, Firebase supplements with new items
-    const mergedData = [...jsonData];
-    const existingIds = new Set(jsonData.map(p => p.id));
-    
-    let firebaseAdditions = 0;
-    firebaseData.forEach(product => {
-      if (!existingIds.has(product.id)) {
-        mergedData.push(product);
-        firebaseAdditions++;
-      }
-    });
-    
-    if (firebaseAdditions > 0) {
-      console.log(`[Merge] Added ${firebaseAdditions} unique products from Firebase`);
-    }
-    
-    console.log(`[Merge] Total products available: ${mergedData.length}`);
-    
-    // Ensure we have data even if both sources fail
-    if (mergedData.length === 0) {
-      console.error('[Fetch] No data available from any source!');
-    }
-    
-    // Cache the merged data
-    localStorage.setItem('productData', JSON.stringify(mergedData));
-    localStorage.setItem('productData_ts', Date.now().toString());
-    return mergedData;
-  } catch (err) {
-    console.error('[Fetch Fresh] Critical error:', err);
-    return null;
   }
 }
 
@@ -127,56 +81,152 @@ async function fetchData() {
   const cachedAt = localStorage.getItem('productData_ts');
   const now = Date.now();
 
-  let data = [];
-
+  // Check cache first
   if (cached && cachedAt) {
     const isFresh = now - parseInt(cachedAt) < CACHE_TTL_MS;
-    data = JSON.parse(cached);
-    console.log(`[Cache] Using cached data (${data.length} products)`);
+    const cachedData = JSON.parse(cached);
+    console.log(`[Cache] Using cached data (${cachedData.length} products)`);
+    
+    // Display cached data immediately
+    allData = cachedData;
+    filteredData = cachedData;
+    renderProducts(filteredData, currentPage);
     hideLoading();
 
-    // Fetch in background if stale
+    // Refresh in background if stale
     if (!isFresh) {
-      console.log('[Cache] Expired. Fetching fresh data in background...');
-      fetchFreshData().then(fresh => {
-        if (fresh && fresh.length > 0) {
-          const oldHash = JSON.stringify(data);
-          const newHash = JSON.stringify(fresh);
-          if (oldHash !== newHash) {
-            console.log('[Update] New data available');
-            const notice = document.createElement('div');
-            notice.style.cssText = `
-              position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
-              background: #333; color: white; padding: 10px 20px; border-radius: 5px;
-              font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 9999;
-            `;
-            const btn = document.createElement('button');
-            btn.textContent = 'New products available. Click to refresh';
-            btn.style.cssText = `
-              background: #00c853; border: none; color: white; padding: 6px 12px;
-              margin-left: 10px; border-radius: 4px; cursor: pointer;
-            `;
-            btn.onclick = () => location.reload();
-            notice.appendChild(document.createTextNode('Update Available'));
-            notice.appendChild(btn);
-            document.body.appendChild(notice);
-          }
-        }
-      });
+      console.log('[Cache] Stale, refreshing in background...');
+      refreshDataInBackground();
     }
-
-    return data;
-  } else {
-    console.log('[Cache] No cache found. Fetching fresh data...');
-    const fresh = await fetchFreshData();
-    data = fresh || [];
-    hideLoading();
-    return data;
+    
+    return cachedData;
   }
+
+  // No cache: Fetch JSON immediately and display
+  console.log('[Fetch] Loading JSON...');
+  const jsonData = await fetchJSONData();
+  
+  if (jsonData.length > 0) {
+    // Display JSON data immediately
+    allData = jsonData;
+    filteredData = jsonData;
+    renderProducts(filteredData, currentPage);
+    hideLoading();
+    
+    // Save to cache
+    localStorage.setItem('productData', JSON.stringify(jsonData));
+    localStorage.setItem('productData_ts', Date.now().toString());
+    
+    // Fetch Firebase in background and merge if available
+    console.log('[Firebase] Fetching in background...');
+    fetchFirebaseData().then(firebaseData => {
+      if (firebaseData.length > 0) {
+        const merged = mergeData(jsonData, firebaseData);
+        if (merged.length > jsonData.length) {
+          console.log(`[Firebase] Added ${merged.length - jsonData.length} new products`);
+          allData = merged;
+          
+          // Update cache with merged data
+          localStorage.setItem('productData', JSON.stringify(merged));
+          localStorage.setItem('productData_ts', Date.now().toString());
+          
+          // Show update notification
+          showUpdateNotification();
+        }
+      }
+    });
+    
+    return jsonData;
+  }
+  
+  // Fallback: No JSON data, try Firebase
+  console.log('[Fetch] No JSON data, trying Firebase...');
+  const firebaseData = await fetchFirebaseData();
+  allData = firebaseData;
+  filteredData = firebaseData;
+  renderProducts(filteredData, currentPage);
+  hideLoading();
+  
+  if (firebaseData.length > 0) {
+    localStorage.setItem('productData', JSON.stringify(firebaseData));
+    localStorage.setItem('productData_ts', Date.now().toString());
+  }
+  
+  return firebaseData;
+}
+
+function mergeData(jsonData, firebaseData) {
+  const merged = [...jsonData];
+  const existingIds = new Set(jsonData.map(p => p.id));
+  
+  firebaseData.forEach(product => {
+    if (!existingIds.has(product.id)) {
+      merged.push(product);
+    }
+  });
+  
+  return merged;
+}
+
+async function refreshDataInBackground() {
+  try {
+    const [jsonData, firebaseData] = await Promise.all([
+      fetchJSONData(),
+      fetchFirebaseData()
+    ]);
+    
+    const merged = mergeData(jsonData, firebaseData);
+    
+    if (merged.length > 0) {
+      const oldHash = JSON.stringify(allData);
+      const newHash = JSON.stringify(merged);
+      
+      if (oldHash !== newHash) {
+        console.log('[Update] New data available');
+        localStorage.setItem('productData', JSON.stringify(merged));
+        localStorage.setItem('productData_ts', Date.now().toString());
+        showUpdateNotification();
+      }
+    }
+  } catch (err) {
+    console.error('[Refresh] Error:', err);
+  }
+}
+
+function showUpdateNotification() {
+  const existing = document.getElementById('update-notification');
+  if (existing) return;
+  
+  const notice = document.createElement('div');
+  notice.id = 'update-notification';
+  notice.style.cssText = `
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: #333; color: white; padding: 12px 20px; border-radius: 8px;
+    font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9999;
+    display: flex; align-items: center; gap: 12px;
+  `;
+  
+  const text = document.createElement('span');
+  text.textContent = 'New products available!';
+  
+  const btn = document.createElement('button');
+  btn.textContent = 'Refresh';
+  btn.style.cssText = `
+    background: #00c853; border: none; color: white; padding: 6px 16px;
+    border-radius: 4px; cursor: pointer; font-weight: 600;
+  `;
+  btn.onclick = () => location.reload();
+  
+  notice.appendChild(text);
+  notice.appendChild(btn);
+  document.body.appendChild(notice);
 }
 
 function renderPaginationControls(current, total) {
   const container = document.getElementById('pagination');
+  container.innerHTML = '';
+
+  if (total <= 1) return;
 
   function createButton(text, page, disabled = false) {
     const btn = document.createElement('button');
@@ -198,6 +248,7 @@ function renderPaginationControls(current, total) {
       btn.onclick = () => {
         currentPage = page;
         renderProducts(filteredData, currentPage);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       };
     }
     container.appendChild(btn);
@@ -207,7 +258,7 @@ function renderPaginationControls(current, total) {
   createButton('< Prev 5', Math.max(1, current - 5), current <= 5);
   createButton('< Prev', current - 1, current === 1);
 
-  createButton(`Page ${current}`, current, true);
+  createButton(`Page ${current} of ${total}`, current, true);
 
   createButton('Next >', current + 1, current === total);
   createButton('Next 5 >', Math.min(total, current + 5), current + 5 > total);
@@ -221,7 +272,7 @@ function renderProducts(products, page = 1) {
   pagination.innerHTML = '';
 
   if (products.length === 0) {
-    list.innerHTML = '<p>No products found.</p>';
+    list.innerHTML = '<p style="text-align:center; padding:2rem; color:#666;">No products found.</p>';
     return;
   }
 
@@ -235,7 +286,7 @@ function renderProducts(products, page = 1) {
     card.className = 'product-card';
     card.style.animationDelay = `${index * 50}ms`;
     card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}" class="product-image" />
+      <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" />
       <h2>${product.name}</h2>
       <p><strong>Price:</strong> Rs ${product.price} /-</p>
       <p>${product.description}</p>
@@ -259,25 +310,20 @@ function searchProducts(data, query) {
   );
 }
 
+// Initialize
 fetchData().then(data => {
-  filteredData = data;
-  renderProducts(filteredData, currentPage);
-  
   const input = document.getElementById('searchInput');
   input.addEventListener('input', (e) => {
-    showLoading();
-    setTimeout(() => {
-      filteredData = searchProducts(data, e.target.value);
-      currentPage = 1;
-      renderProducts(filteredData, currentPage);
-      hideLoading();
-    }, 300);
+    const query = e.target.value;
+    filteredData = searchProducts(allData, query);
+    currentPage = 1;
+    renderProducts(filteredData, currentPage);
   });
 });
 
 // Register service worker for offline support
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
-    .then(() => console.log('[Service Worker] Registered successfully'))
-    .catch(err => console.error('[Service Worker] Registration failed:', err));
+    .then(() => console.log('[SW] Registered'))
+    .catch(err => console.warn('[SW] Registration failed:', err));
 }
