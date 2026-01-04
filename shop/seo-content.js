@@ -160,7 +160,7 @@ class SEOContent extends HTMLElement {
           
           <div class="category-box">
             <strong>Handy Items (Avaliable upon request)</strong>
-            <p>Measuring Tape, Gun Thread, Bundles of Rubber bands, Ball of Rubber bands (Chungi), Marbles, Birthday items and accessories</p>
+            <p>Measuring Tape, Gun Thread, Bundles of Rubber bands, Ball of Rubber bands (Chungi), Marbles, Birthday items and accessories, Flying Kite, kite threads, kite roller</p>
           </div>
 
         </div>
