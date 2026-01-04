@@ -39,13 +39,14 @@ async function fetchFirebaseData() {
     const snapshot = await get(productsRef);
     
     if (snapshot.exists()) {
+      console.log('[Firebase] Data fetched successfully');
       return snapshot.val();
     } else {
-      console.log('No Firebase data available');
+      console.log('[Firebase] No data available');
       return [];
     }
   } catch (error) {
-    console.error('[Firebase Fetch] Error:', error);
+    console.warn('[Firebase] Failed to fetch, continuing with JSON only:', error.message);
     return [];
   }
 }
@@ -53,40 +54,69 @@ async function fetchFirebaseData() {
 async function fetchJSONData() {
   try {
     const promises = DB_URLS.map(url => 
-      fetch(url).then(res => res.ok ? res.json() : []).catch(() => [])
+      fetch(url)
+        .then(res => {
+          if (res.ok) {
+            console.log(`[JSON] Successfully fetched ${url}`);
+            return res.json();
+          }
+          console.warn(`[JSON] Failed to fetch ${url}`);
+          return [];
+        })
+        .catch(err => {
+          console.warn(`[JSON] Error fetching ${url}:`, err.message);
+          return [];
+        })
     );
     const results = await Promise.all(promises);
-    return results.flat();
+    const flatResults = results.flat();
+    console.log(`[JSON] Total products loaded: ${flatResults.length}`);
+    return flatResults;
   } catch (err) {
-    console.error('[JSON Fetch] Error:', err);
+    console.error('[JSON Fetch] Critical error:', err);
     return [];
   }
 }
 
 async function fetchFreshData() {
   try {
-    // Fetch both Firebase and JSON data
-    const [firebaseData, jsonData] = await Promise.all([
-      fetchFirebaseData(),
-      fetchJSONData()
-    ]);
+    // Always fetch JSON data first (primary source)
+    console.log('[Fetch] Loading JSON databases...');
+    const jsonData = await fetchJSONData();
     
-    // Merge data, removing duplicates by ID (Firebase data takes precedence)
-    const mergedData = [...firebaseData];
-    const existingIds = new Set(firebaseData.map(p => p.id));
+    // Try to fetch Firebase data (supplementary source)
+    console.log('[Fetch] Attempting Firebase fetch...');
+    const firebaseData = await fetchFirebaseData();
     
-    jsonData.forEach(product => {
+    // Merge data: JSON is base, Firebase supplements with new items
+    const mergedData = [...jsonData];
+    const existingIds = new Set(jsonData.map(p => p.id));
+    
+    let firebaseAdditions = 0;
+    firebaseData.forEach(product => {
       if (!existingIds.has(product.id)) {
         mergedData.push(product);
+        firebaseAdditions++;
       }
     });
+    
+    if (firebaseAdditions > 0) {
+      console.log(`[Merge] Added ${firebaseAdditions} unique products from Firebase`);
+    }
+    
+    console.log(`[Merge] Total products available: ${mergedData.length}`);
+    
+    // Ensure we have data even if both sources fail
+    if (mergedData.length === 0) {
+      console.error('[Fetch] No data available from any source!');
+    }
     
     // Cache the merged data
     localStorage.setItem('productData', JSON.stringify(mergedData));
     localStorage.setItem('productData_ts', Date.now().toString());
     return mergedData;
   } catch (err) {
-    console.error('[Fetch Fresh] Error:', err);
+    console.error('[Fetch Fresh] Critical error:', err);
     return null;
   }
 }
@@ -102,16 +132,18 @@ async function fetchData() {
   if (cached && cachedAt) {
     const isFresh = now - parseInt(cachedAt) < CACHE_TTL_MS;
     data = JSON.parse(cached);
+    console.log(`[Cache] Using cached data (${data.length} products)`);
     hideLoading();
 
     // Fetch in background if stale
     if (!isFresh) {
-      console.log('[Cache] Expired. Fetching in background...');
+      console.log('[Cache] Expired. Fetching fresh data in background...');
       fetchFreshData().then(fresh => {
-        if (fresh) {
+        if (fresh && fresh.length > 0) {
           const oldHash = JSON.stringify(data);
           const newHash = JSON.stringify(fresh);
           if (oldHash !== newHash) {
+            console.log('[Update] New data available');
             const notice = document.createElement('div');
             notice.style.cssText = `
               position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
@@ -135,6 +167,7 @@ async function fetchData() {
 
     return data;
   } else {
+    console.log('[Cache] No cache found. Fetching fresh data...');
     const fresh = await fetchFreshData();
     data = fresh || [];
     hideLoading();
@@ -245,6 +278,6 @@ fetchData().then(data => {
 // Register service worker for offline support
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
-    .then(() => console.log('Service Worker registered'))
-    .catch(err => console.error('Service Worker registration failed:', err));
+    .then(() => console.log('[Service Worker] Registered successfully'))
+    .catch(err => console.error('[Service Worker] Registration failed:', err));
 }
