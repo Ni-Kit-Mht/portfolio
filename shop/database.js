@@ -354,12 +354,12 @@ function searchProducts(data, query) {
 
 // Initialize - wait for DOM to be ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeApp);
+  document.addEventListener('DOMContentLoaded', initApp);
 } else {
-  initializeApp();
+  initApp();
 }
 
-function initializeApp() {
+function initApp() {
   console.log('[App] DOM ready, initializing...');
   
   fetchData().then(data => {
