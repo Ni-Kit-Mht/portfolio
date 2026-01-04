@@ -140,10 +140,10 @@
     "category": "Geometry boxes",
     "popularity": 75,
     "rating": 4.2,
-    "available": false,
-    "available_soon": true,
+    "available": true,
+    "available_soon": false,
     "stock": 0,
-    "estimated_days_to_availability": 5,
+    "estimated_days_to_availability": 0,
     "tags": ["geometry", "math", "school"]
   },
   {
