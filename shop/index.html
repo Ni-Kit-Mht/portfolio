@@ -87,7 +87,7 @@
     <input type="text" id="searchInput" placeholder="Search products..." />
 
     <div id="productList"></div>
-        <div id="loading"><div class="spinner"></div></div>
+    <div id="loading"><div class="spinner"></div></div>
     <div id="pagination" style="text-align:center; margin: 1rem;"></div>
 
   </main>
@@ -99,7 +99,24 @@
   <script src="https://nikitmehta.com.np/footer.js" defer></script>
   <script src="https://nikitmehta.com.np/shop/seo-content.js" defer></script>
   
-<script nonce="r4nd0mStr1ng">
+<script type="module" nonce="r4nd0mStr1ng">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+  import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCSyihPKxSmuUJbedOV1ewY4jDawx82A7k",
+    authDomain: "shop-image-stock.firebaseapp.com",
+    databaseURL: "https://shop-image-stock-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "shop-image-stock",
+    storageBucket: "shop-image-stock.firebasestorage.app",
+    messagingSenderId: "107558527883",
+    appId: "1:107558527883:web:2de05fb836083be933058e",
+    measurementId: "G-FLG563FFZY"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
   const DB_URLS = [
     'https://nikitmehta.com.np/database.json',
     'https://nikitmehta.com.np/database1.json',
@@ -118,16 +135,58 @@
     document.getElementById('loading').style.display = 'none';
   }
 
-  async function fetchFreshData() {
+  async function fetchFirebaseData() {
+    try {
+      const productsRef = ref(database, 'products');
+      const snapshot = await get(productsRef);
+      
+      if (snapshot.exists()) {
+        return snapshot.val();
+      } else {
+        console.log('No Firebase data available');
+        return [];
+      }
+    } catch (error) {
+      console.error('[Firebase Fetch] Error:', error);
+      return [];
+    }
+  }
+
+  async function fetchJSONData() {
     try {
       const promises = DB_URLS.map(url => 
         fetch(url).then(res => res.ok ? res.json() : []).catch(() => [])
       );
       const results = await Promise.all(promises);
-      const data = results.flat();
-      localStorage.setItem('productData', JSON.stringify(data));
+      return results.flat();
+    } catch (err) {
+      console.error('[JSON Fetch] Error:', err);
+      return [];
+    }
+  }
+
+  async function fetchFreshData() {
+    try {
+      // Fetch both Firebase and JSON data
+      const [firebaseData, jsonData] = await Promise.all([
+        fetchFirebaseData(),
+        fetchJSONData()
+      ]);
+      
+      // Merge data, removing duplicates by ID (Firebase data takes precedence)
+      const mergedData = [...firebaseData];
+      const existingIds = new Set(firebaseData.map(p => p.id));
+      
+      jsonData.forEach(product => {
+        if (!existingIds.has(product.id)) {
+          mergedData.push(product);
+        }
+      });
+      
+      // Cache the merged data
+      localStorage.setItem('productData', JSON.stringify(mergedData));
       localStorage.setItem('productData_ts', Date.now().toString());
-      return data;
+      return mergedData;
     } catch (err) {
       console.error('[Fetch Fresh] Error:', err);
       return null;
@@ -186,82 +245,79 @@
   }
 
   function renderPaginationControls(current, total) {
-  const container = document.getElementById('pagination');
+    const container = document.getElementById('pagination');
 
-  function createButton(text, page, disabled = false) {
-    const btn = document.createElement('button');
-    btn.textContent = text;
-    btn.disabled = disabled;
-    btn.style.cssText = `
-      margin: 4px 2px;
-      padding: 0.5em 1em;
-      font-size: clamp(0.8rem, 1vw, 1rem);
-      border: none;
-      border-radius: 0.5em;
-      background: ${disabled ? '#ccc' : '#3498db'};
-      color: white;
-      cursor: ${disabled ? 'default' : 'pointer'};
-      max-width: 100%;
-      flex-shrink: 1;
-    `;
-    if (!disabled) {
-      btn.onclick = () => {
-        currentPage = page;
-        renderProducts(filteredData, currentPage);
-      };
+    function createButton(text, page, disabled = false) {
+      const btn = document.createElement('button');
+      btn.textContent = text;
+      btn.disabled = disabled;
+      btn.style.cssText = `
+        margin: 4px 2px;
+        padding: 0.5em 1em;
+        font-size: clamp(0.8rem, 1vw, 1rem);
+        border: none;
+        border-radius: 0.5em;
+        background: ${disabled ? '#ccc' : '#3498db'};
+        color: white;
+        cursor: ${disabled ? 'default' : 'pointer'};
+        max-width: 100%;
+        flex-shrink: 1;
+      `;
+      if (!disabled) {
+        btn.onclick = () => {
+          currentPage = page;
+          renderProducts(filteredData, currentPage);
+        };
+      }
+      container.appendChild(btn);
     }
-    container.appendChild(btn);
+
+    createButton('<< First', 1, current === 1);
+    createButton('< Prev 5', Math.max(1, current - 5), current <= 5);
+    createButton('< Prev', current - 1, current === 1);
+
+    createButton(`Page ${current}`, current, true);
+
+    createButton('Next >', current + 1, current === total);
+    createButton('Next 5 >', Math.min(total, current + 5), current + 5 > total);
+    createButton('Last >>', total, current === total);
   }
 
-  createButton('<< First', 1, current === 1);
-  createButton('< Prev 5', Math.max(1, current - 5), current <= 5);
-  createButton('< Prev', current - 1, current === 1);
+  function renderProducts(products, page = 1) {
+    const list = document.getElementById('productList');
+    const pagination = document.getElementById('pagination');
+    list.innerHTML = '';
+    pagination.innerHTML = '';
 
-  createButton(`Page ${current}`, current, true);
+    if (products.length === 0) {
+      list.innerHTML = '<p>No products found.</p>';
+      return;
+    }
 
-  createButton('Next >', current + 1, current === total);
-  createButton('Next 5 >', Math.min(total, current + 5), current + 5 > total);
-  createButton('Last >>', total, current === total);
-}
+    const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    const paginatedItems = products.slice(start, end);
 
-  
+    paginatedItems.forEach((product, index) => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.style.animationDelay = `${index * 50}ms`;
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="product-image" />
+        <h2>${product.name}</h2>
+        <p><strong>Price:</strong> Rs ${product.price} /-</p>
+        <p>${product.description}</p>
+        <p><strong>Rating:</strong> ${product.rating} / 5</p>
+        <p><strong>Stock:</strong> ${product.stock}</p>
+        <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? 
+          `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
+      `;
+      list.appendChild(card);
+    });
 
-function renderProducts(products, page = 1) {
-  const list = document.getElementById('productList');
-  const pagination = document.getElementById('pagination');
-  list.innerHTML = '';
-  pagination.innerHTML = '';
-
-  if (products.length === 0) {
-    list.innerHTML = '<p>No products found.</p>';
-    return;
+    renderPaginationControls(page, totalPages);
   }
-
-  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
-  const start = (page - 1) * ITEMS_PER_PAGE;
-  const end = start + ITEMS_PER_PAGE;
-  const paginatedItems = products.slice(start, end);
-
-  paginatedItems.forEach((product, index) => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.style.animationDelay = `${index * 50}ms`;
-    card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}" class="product-image" />
-      <h2>${product.name}</h2>
-      <p><strong>Price:</strong> Rs ${product.price} /-</p>
-      <p>${product.description}</p>
-      <p><strong>Rating:</strong> ${product.rating} / 5</p>
-      <p><strong>Stock:</strong> ${product.stock}</p>
-      <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? 
-        `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
-    `;
-    list.appendChild(card);
-  });
-
-  renderPaginationControls(page, totalPages);
-}
-
 
   function searchProducts(data, query) {
     const lower = query.toLowerCase();
@@ -295,7 +351,6 @@ function renderProducts(products, page = 1) {
       .catch(err => console.error('Service Worker registration failed:', err));
   }
 </script>
-
 
 </body>
 </html>
