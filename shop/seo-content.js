@@ -87,7 +87,7 @@ class SEOContent extends HTMLElement {
         <div class="product-categories">
           <div class="category-box">
             <strong>Writing Instruments</strong>
-            <p>Pens (magic, ink, bullet, gel, ball, pilot, roller), pencils (lead, pen, normal, magic, engineering drawing), markers, highlighters, brush pen, sign pen</p>
+            <p>Pens (magic, ink, bullet, gel, ball, pilot, roller), pencils (lead, pen, normal, magic, engineering drawing), markers, highlighters, brush pen, sign pen, Tipex</p>
           </div>
           <div class="category-box">
             <strong>Classroom items</strong>
@@ -160,7 +160,7 @@ class SEOContent extends HTMLElement {
           
           <div class="category-box">
             <strong>Handy Items (Avaliable upon request)</strong>
-            <p>Measuring Tape, Gun Thread, Bundles of Rubber bands, Ball of Rubber bands (Chungi), Marbles</p>
+            <p>Measuring Tape, Gun Thread, Bundles of Rubber bands, Ball of Rubber bands (Chungi), Marbles, Birthday items and accessories</p>
           </div>
 
         </div>
