@@ -27,11 +27,13 @@ let filteredData = [];
 let allData = [];
 
 function showLoading() {
-  document.getElementById('loading').style.display = 'block';
+  const loadingEl = document.getElementById('loading');
+  if (loadingEl) loadingEl.style.display = 'block';
 }
 
 function hideLoading() {
-  document.getElementById('loading').style.display = 'none';
+  const loadingEl = document.getElementById('loading');
+  if (loadingEl) loadingEl.style.display = 'none';
 }
 
 async function fetchFirebaseData() {
@@ -40,14 +42,15 @@ async function fetchFirebaseData() {
     const snapshot = await get(productsRef);
     
     if (snapshot.exists()) {
-      console.log('[Firebase] Data fetched successfully');
-      return snapshot.val();
+      const data = snapshot.val();
+      console.log('[Firebase] Fetched:', Array.isArray(data) ? data.length : 'object', 'items');
+      return Array.isArray(data) ? data : Object.values(data);
     } else {
       console.log('[Firebase] No data available');
       return [];
     }
   } catch (error) {
-    console.warn('[Firebase] Failed to fetch:', error.message);
+    console.warn('[Firebase] Failed:', error.message);
     return [];
   }
 }
@@ -58,7 +61,7 @@ async function fetchJSONData() {
       fetch(url)
         .then(res => {
           if (res.ok) {
-            console.log(`[JSON] ✓ Loaded ${url}`);
+            console.log(`[JSON] ✓ ${url}`);
             return res.json();
           }
           return [];
@@ -67,7 +70,7 @@ async function fetchJSONData() {
     );
     const results = await Promise.all(promises);
     const flatResults = results.flat();
-    console.log(`[JSON] Total products: ${flatResults.length}`);
+    console.log(`[JSON] Total: ${flatResults.length} products`);
     return flatResults;
   } catch (err) {
     console.error('[JSON] Error:', err);
@@ -76,80 +79,107 @@ async function fetchJSONData() {
 }
 
 async function fetchData() {
+  console.log('[Init] Starting data fetch...');
   showLoading();
+  
   const cached = localStorage.getItem('productData');
   const cachedAt = localStorage.getItem('productData_ts');
   const now = Date.now();
 
   // Check cache first
   if (cached && cachedAt) {
-    const isFresh = now - parseInt(cachedAt) < CACHE_TTL_MS;
-    const cachedData = JSON.parse(cached);
-    console.log(`[Cache] Using cached data (${cachedData.length} products)`);
-    
-    // Display cached data immediately
-    allData = cachedData;
-    filteredData = cachedData;
-    renderProducts(filteredData, currentPage);
-    hideLoading();
+    try {
+      const isFresh = now - parseInt(cachedAt) < CACHE_TTL_MS;
+      const cachedData = JSON.parse(cached);
+      console.log(`[Cache] Found ${cachedData.length} products (${isFresh ? 'fresh' : 'stale'})`);
+      
+      // Display cached data immediately
+      allData = cachedData;
+      filteredData = cachedData;
+      renderProducts(filteredData, currentPage);
+      hideLoading();
 
-    // Refresh in background if stale
-    if (!isFresh) {
-      console.log('[Cache] Stale, refreshing in background...');
-      refreshDataInBackground();
+      // Refresh in background if stale
+      if (!isFresh) {
+        console.log('[Cache] Refreshing in background...');
+        refreshDataInBackground();
+      }
+      
+      return cachedData;
+    } catch (err) {
+      console.error('[Cache] Parse error:', err);
+      localStorage.removeItem('productData');
+      localStorage.removeItem('productData_ts');
     }
-    
-    return cachedData;
   }
 
-  // No cache: Fetch JSON immediately and display
-  console.log('[Fetch] Loading JSON...');
+  // No cache: Fetch JSON immediately
+  console.log('[Fetch] No cache, loading JSON...');
   const jsonData = await fetchJSONData();
+  console.log('[Fetch] JSON returned:', jsonData.length, 'products');
   
   if (jsonData.length > 0) {
     // Display JSON data immediately
     allData = jsonData;
     filteredData = jsonData;
+    console.log('[Render] Displaying', filteredData.length, 'products');
     renderProducts(filteredData, currentPage);
     hideLoading();
     
     // Save to cache
-    localStorage.setItem('productData', JSON.stringify(jsonData));
-    localStorage.setItem('productData_ts', Date.now().toString());
+    try {
+      localStorage.setItem('productData', JSON.stringify(jsonData));
+      localStorage.setItem('productData_ts', Date.now().toString());
+      console.log('[Cache] Saved', jsonData.length, 'products');
+    } catch (err) {
+      console.error('[Cache] Save error:', err);
+    }
     
-    // Fetch Firebase in background and merge if available
-    console.log('[Firebase] Fetching in background...');
+    // Fetch Firebase in background
+    console.log('[Firebase] Starting background fetch...');
     fetchFirebaseData().then(firebaseData => {
+      console.log('[Firebase] Returned:', firebaseData.length, 'products');
       if (firebaseData.length > 0) {
         const merged = mergeData(jsonData, firebaseData);
         if (merged.length > jsonData.length) {
           console.log(`[Firebase] Added ${merged.length - jsonData.length} new products`);
           allData = merged;
           
-          // Update cache with merged data
-          localStorage.setItem('productData', JSON.stringify(merged));
-          localStorage.setItem('productData_ts', Date.now().toString());
+          // Update cache
+          try {
+            localStorage.setItem('productData', JSON.stringify(merged));
+            localStorage.setItem('productData_ts', Date.now().toString());
+          } catch (err) {
+            console.error('[Cache] Update error:', err);
+          }
           
-          // Show update notification
           showUpdateNotification();
         }
       }
+    }).catch(err => {
+      console.error('[Firebase] Background fetch error:', err);
     });
     
     return jsonData;
   }
   
-  // Fallback: No JSON data, try Firebase
-  console.log('[Fetch] No JSON data, trying Firebase...');
+  // Fallback: Try Firebase
+  console.log('[Fetch] No JSON, trying Firebase...');
   const firebaseData = await fetchFirebaseData();
+  console.log('[Fetch] Firebase returned:', firebaseData.length, 'products');
+  
   allData = firebaseData;
   filteredData = firebaseData;
   renderProducts(filteredData, currentPage);
   hideLoading();
   
   if (firebaseData.length > 0) {
-    localStorage.setItem('productData', JSON.stringify(firebaseData));
-    localStorage.setItem('productData_ts', Date.now().toString());
+    try {
+      localStorage.setItem('productData', JSON.stringify(firebaseData));
+      localStorage.setItem('productData_ts', Date.now().toString());
+    } catch (err) {
+      console.error('[Cache] Save error:', err);
+    }
   }
   
   return firebaseData;
@@ -182,7 +212,7 @@ async function refreshDataInBackground() {
       const newHash = JSON.stringify(merged);
       
       if (oldHash !== newHash) {
-        console.log('[Update] New data available');
+        console.log('[Update] New data detected');
         localStorage.setItem('productData', JSON.stringify(merged));
         localStorage.setItem('productData_ts', Date.now().toString());
         showUpdateNotification();
@@ -224,6 +254,11 @@ function showUpdateNotification() {
 
 function renderPaginationControls(current, total) {
   const container = document.getElementById('pagination');
+  if (!container) {
+    console.error('[Pagination] Container not found!');
+    return;
+  }
+  
   container.innerHTML = '';
 
   if (total <= 1) return;
@@ -257,22 +292,33 @@ function renderPaginationControls(current, total) {
   createButton('<< First', 1, current === 1);
   createButton('< Prev 5', Math.max(1, current - 5), current <= 5);
   createButton('< Prev', current - 1, current === 1);
-
   createButton(`Page ${current} of ${total}`, current, true);
-
   createButton('Next >', current + 1, current === total);
   createButton('Next 5 >', Math.min(total, current + 5), current + 5 > total);
   createButton('Last >>', total, current === total);
 }
 
 function renderProducts(products, page = 1) {
+  console.log('[Render] Called with', products.length, 'products, page', page);
+  
   const list = document.getElementById('productList');
   const pagination = document.getElementById('pagination');
+  
+  if (!list) {
+    console.error('[Render] productList element not found!');
+    return;
+  }
+  if (!pagination) {
+    console.error('[Render] pagination element not found!');
+    return;
+  }
+  
   list.innerHTML = '';
   pagination.innerHTML = '';
 
   if (products.length === 0) {
-    list.innerHTML = '<p style="text-align:center; padding:2rem; color:#666;">No products found.</p>';
+    list.innerHTML = '<p style="text-align:center; padding:2rem; color:#666; font-size:1.2rem;">No products found.</p>';
+    console.log('[Render] No products to display');
     return;
   }
 
@@ -280,48 +326,72 @@ function renderProducts(products, page = 1) {
   const start = (page - 1) * ITEMS_PER_PAGE;
   const end = start + ITEMS_PER_PAGE;
   const paginatedItems = products.slice(start, end);
+  
+  console.log('[Render] Showing items', start, 'to', end, '/', products.length);
 
   paginatedItems.forEach((product, index) => {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.style.animationDelay = `${index * 50}ms`;
     card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" />
-      <h2>${product.name}</h2>
-      <p><strong>Price:</strong> Rs ${product.price} /-</p>
-      <p>${product.description}</p>
-      <p><strong>Rating:</strong> ${product.rating} / 5</p>
-      <p><strong>Stock:</strong> ${product.stock}</p>
+      <img src="${product.image || 'placeholder.jpg'}" alt="${product.name || 'Product'}" class="product-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'" />
+      <h2>${product.name || 'Unnamed Product'}</h2>
+      <p><strong>Price:</strong> Rs ${product.price || 'N/A'} /-</p>
+      <p>${product.description || 'No description available'}</p>
+      <p><strong>Rating:</strong> ${product.rating || 'N/A'} / 5</p>
+      <p><strong>Stock:</strong> ${product.stock || 'N/A'}</p>
       <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? 
         `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
     `;
     list.appendChild(card);
   });
 
+  console.log('[Render] Added', paginatedItems.length, 'cards to DOM');
   renderPaginationControls(page, totalPages);
 }
 
 function searchProducts(data, query) {
   const lower = query.toLowerCase();
   return data.filter(item =>
-    item.name.toLowerCase().includes(lower) ||
-    item.description.toLowerCase().includes(lower) ||
+    (item.name || '').toLowerCase().includes(lower) ||
+    (item.description || '').toLowerCase().includes(lower) ||
     (item.tags || []).some(tag => tag.toLowerCase().includes(lower))
   );
 }
 
-// Initialize
-fetchData().then(data => {
-  const input = document.getElementById('searchInput');
-  input.addEventListener('input', (e) => {
-    const query = e.target.value;
-    filteredData = searchProducts(allData, query);
-    currentPage = 1;
-    renderProducts(filteredData, currentPage);
-  });
-});
+// Initialize - wait for DOM to be ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
 
-// Register service worker for offline support
+function initializeApp() {
+  console.log('[App] DOM ready, initializing...');
+  
+  fetchData().then(data => {
+    console.log('[App] Data loaded:', data.length, 'products');
+    
+    const input = document.getElementById('searchInput');
+    if (input) {
+      input.addEventListener('input', (e) => {
+        const query = e.target.value;
+        console.log('[Search] Query:', query);
+        filteredData = searchProducts(allData, query);
+        currentPage = 1;
+        renderProducts(filteredData, currentPage);
+      });
+      console.log('[App] Search listener attached');
+    } else {
+      console.error('[App] searchInput element not found!');
+    }
+  }).catch(err => {
+    console.error('[App] Fatal error:', err);
+    hideLoading();
+  });
+}
+
+// Register service worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
     .then(() => console.log('[SW] Registered'))
