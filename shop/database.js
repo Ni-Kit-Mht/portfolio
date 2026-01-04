@@ -113,8 +113,8 @@ async function fetchData() {
     }
   }
 
-  // No cache: Fetch JSON immediately
-  console.log('[Fetch] No cache, loading JSON...');
+  // No cache: Fetch JSON first, always
+  console.log('[Fetch] Loading JSON files...');
   const jsonData = await fetchJSONData();
   console.log('[Fetch] JSON returned:', jsonData.length, 'products');
   
@@ -122,11 +122,11 @@ async function fetchData() {
     // Display JSON data immediately
     allData = jsonData;
     filteredData = jsonData;
-    console.log('[Render] Displaying', filteredData.length, 'products');
+    console.log('[Render] Displaying', filteredData.length, 'JSON products');
     renderProducts(filteredData, currentPage);
     hideLoading();
     
-    // Save to cache
+    // Save JSON to cache
     try {
       localStorage.setItem('productData', JSON.stringify(jsonData));
       localStorage.setItem('productData_ts', Date.now().toString());
@@ -134,55 +134,48 @@ async function fetchData() {
     } catch (err) {
       console.error('[Cache] Save error:', err);
     }
-    
-    // Fetch Firebase in background
-    console.log('[Firebase] Starting background fetch...');
-    fetchFirebaseData().then(firebaseData => {
-      console.log('[Firebase] Returned:', firebaseData.length, 'products');
-      if (firebaseData.length > 0) {
-        const merged = mergeData(jsonData, firebaseData);
-        if (merged.length > jsonData.length) {
-          console.log(`[Firebase] Added ${merged.length - jsonData.length} new products`);
-          allData = merged;
-          
-          // Update cache
-          try {
-            localStorage.setItem('productData', JSON.stringify(merged));
-            localStorage.setItem('productData_ts', Date.now().toString());
-          } catch (err) {
-            console.error('[Cache] Update error:', err);
-          }
-          
-          showUpdateNotification();
-        }
-      }
-    }).catch(err => {
-      console.error('[Firebase] Background fetch error:', err);
-    });
-    
-    return jsonData;
+  } else {
+    console.log('[Fetch] No JSON data available');
   }
   
-  // Fallback: Try Firebase
-  console.log('[Fetch] No JSON, trying Firebase...');
+  // Now fetch Firebase and merge (regardless of whether JSON had data)
+  console.log('[Firebase] Starting fetch...');
   const firebaseData = await fetchFirebaseData();
-  console.log('[Fetch] Firebase returned:', firebaseData.length, 'products');
-  
-  allData = firebaseData;
-  filteredData = firebaseData;
-  renderProducts(filteredData, currentPage);
-  hideLoading();
+  console.log('[Firebase] Returned:', firebaseData.length, 'products');
   
   if (firebaseData.length > 0) {
-    try {
-      localStorage.setItem('productData', JSON.stringify(firebaseData));
-      localStorage.setItem('productData_ts', Date.now().toString());
-    } catch (err) {
-      console.error('[Cache] Save error:', err);
+    const merged = mergeData(jsonData, firebaseData);
+    console.log(`[Merge] Total products after merge: ${merged.length}`);
+    
+    if (merged.length > jsonData.length) {
+      console.log(`[Firebase] Added ${merged.length - jsonData.length} new products`);
+      allData = merged;
+      filteredData = merged;
+      
+      // Update display with merged data
+      renderProducts(filteredData, currentPage);
+      
+      // Update cache
+      try {
+        localStorage.setItem('productData', JSON.stringify(merged));
+        localStorage.setItem('productData_ts', Date.now().toString());
+        console.log('[Cache] Updated with merged data');
+      } catch (err) {
+        console.error('[Cache] Update error:', err);
+      }
+      
+      // Only show notification if we added new products
+      if (jsonData.length > 0) {
+        showUpdateNotification();
+      }
     }
+  } else if (jsonData.length === 0) {
+    // Neither source had data
+    console.log('[Fetch] No data from any source');
+    hideLoading();
   }
   
-  return firebaseData;
+  return allData;
 }
 
 function mergeData(jsonData, firebaseData) {
