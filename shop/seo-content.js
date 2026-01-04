@@ -108,7 +108,7 @@ class SEOContent extends HTMLElement {
         
           <div class="category-box">
             <strong>School Accessories for Students</strong>
-            <p>Shoes (Black, White), School bags, School Socks, Long Socks, Knee Socks, Stockings, Geometry box, Pencil (box, purse (plastic, cloth)), White board, Covers (Book and Copy)</p>
+            <p>Shoes (Black, White), School bags, School Socks, Long Socks, Knee Socks, Stockings, Geometry box, Pencil (box, purse (plastic, cloth)), White board, Covers (Book and Copy), Exam Board</p>
           </div>
           <div class="category-box">
             <strong>Household and Store Accessories</strong>
