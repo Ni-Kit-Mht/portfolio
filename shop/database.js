@@ -375,11 +375,11 @@ function renderProducts(products, page = 1) {
     }
     
     card.innerHTML = `
-      <img src="${product.image || 'https://via.placeholder.com/300x300?text=No+Image'}" 
+      <img src="${product.image || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22300%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2224%22 text-anchor=%22middle%22 x=%22150%22 y=%22160%22%3ENo Image%3C/text%3E%3C/svg%3E'}" 
            alt="${productName}" 
            class="product-image" 
            loading="lazy" 
-           onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'" />
+           onerror="if(this.src.indexOf('data:image')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22300%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2224%22 text-anchor=%22middle%22 x=%22150%22 y=%22160%22%3ENo Image%3C/text%3E%3C/svg%3E';this.onerror=null;}" />
       <h2>${productName}</h2>
       <p><strong>Price:</strong> Rs ${productPrice} /-</p>
       <p>${productDesc}</p>
