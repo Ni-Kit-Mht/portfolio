@@ -26,6 +26,36 @@ let currentPage = 1;
 let filteredData = [];
 let allData = [];
 
+// Safe localStorage wrapper with error handling
+const storage = {
+  get: (key) => {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      console.warn('[Storage] Get failed:', e.message);
+      return null;
+    }
+  },
+  set: (key, value) => {
+    try {
+      localStorage.setItem(key, value);
+      return true;
+    } catch (e) {
+      console.warn('[Storage] Set failed:', e.message);
+      return false;
+    }
+  },
+  remove: (key) => {
+    try {
+      localStorage.removeItem(key);
+      return true;
+    } catch (e) {
+      console.warn('[Storage] Remove failed:', e.message);
+      return false;
+    }
+  }
+};
+
 function showLoading() {
   const loadingEl = document.getElementById('loading');
   if (loadingEl) loadingEl.style.display = 'block';
@@ -64,9 +94,13 @@ async function fetchJSONData() {
             console.log(`[JSON] ✓ ${url}`);
             return res.json();
           }
+          console.warn(`[JSON] Failed to fetch ${url}: ${res.status}`);
           return [];
         })
-        .catch(() => [])
+        .catch(err => {
+          console.warn(`[JSON] Error fetching ${url}:`, err.message);
+          return [];
+        })
     );
     const results = await Promise.all(promises);
     const flatResults = results.flat();
@@ -82,15 +116,25 @@ async function fetchData() {
   console.log('[Init] Starting data fetch...');
   showLoading();
   
-  const cached = localStorage.getItem('productData');
-  const cachedAt = localStorage.getItem('productData_ts');
+  const cached = storage.get('productData');
+  const cachedAt = storage.get('productData_ts');
   const now = Date.now();
 
   // Check cache first
   if (cached && cachedAt) {
     try {
-      const isFresh = now - parseInt(cachedAt) < CACHE_TTL_MS;
+      const timestamp = parseInt(cachedAt);
+      if (isNaN(timestamp)) {
+        throw new Error('Invalid timestamp');
+      }
+      
+      const isFresh = now - timestamp < CACHE_TTL_MS;
       const cachedData = JSON.parse(cached);
+      
+      if (!Array.isArray(cachedData)) {
+        throw new Error('Invalid cached data format');
+      }
+      
       console.log(`[Cache] Found ${cachedData.length} products (${isFresh ? 'fresh' : 'stale'})`);
       
       // Display cached data immediately
@@ -108,8 +152,8 @@ async function fetchData() {
       return cachedData;
     } catch (err) {
       console.error('[Cache] Parse error:', err);
-      localStorage.removeItem('productData');
-      localStorage.removeItem('productData_ts');
+      storage.remove('productData');
+      storage.remove('productData_ts');
     }
   }
 
@@ -127,13 +171,8 @@ async function fetchData() {
     hideLoading();
     
     // Save JSON to cache
-    try {
-      localStorage.setItem('productData', JSON.stringify(jsonData));
-      localStorage.setItem('productData_ts', Date.now().toString());
-      console.log('[Cache] Saved', jsonData.length, 'products');
-    } catch (err) {
-      console.error('[Cache] Save error:', err);
-    }
+    storage.set('productData', JSON.stringify(jsonData));
+    storage.set('productData_ts', Date.now().toString());
   } else {
     console.log('[Fetch] No JSON data available');
   }
@@ -156,13 +195,8 @@ async function fetchData() {
       renderProducts(filteredData, currentPage);
       
       // Update cache
-      try {
-        localStorage.setItem('productData', JSON.stringify(merged));
-        localStorage.setItem('productData_ts', Date.now().toString());
-        console.log('[Cache] Updated with merged data');
-      } catch (err) {
-        console.error('[Cache] Update error:', err);
-      }
+      storage.set('productData', JSON.stringify(merged));
+      storage.set('productData_ts', Date.now().toString());
       
       // Only show notification if we added new products
       if (jsonData.length > 0) {
@@ -180,10 +214,10 @@ async function fetchData() {
 
 function mergeData(jsonData, firebaseData) {
   const merged = [...jsonData];
-  const existingIds = new Set(jsonData.map(p => p.id));
+  const existingIds = new Set(jsonData.map(p => p.id).filter(id => id != null));
   
   firebaseData.forEach(product => {
-    if (!existingIds.has(product.id)) {
+    if (product.id != null && !existingIds.has(product.id)) {
       merged.push(product);
     }
   });
@@ -200,14 +234,14 @@ async function refreshDataInBackground() {
     
     const merged = mergeData(jsonData, firebaseData);
     
-    if (merged.length > 0) {
-      const oldHash = JSON.stringify(allData);
-      const newHash = JSON.stringify(merged);
+    if (merged.length > 0 && allData.length > 0) {
+      const oldHash = JSON.stringify(allData.map(p => p.id).sort());
+      const newHash = JSON.stringify(merged.map(p => p.id).sort());
       
       if (oldHash !== newHash) {
         console.log('[Update] New data detected');
-        localStorage.setItem('productData', JSON.stringify(merged));
-        localStorage.setItem('productData_ts', Date.now().toString());
+        storage.set('productData', JSON.stringify(merged));
+        storage.set('productData_ts', Date.now().toString());
         showUpdateNotification();
       }
     }
@@ -322,51 +356,61 @@ function renderProducts(products, page = 1) {
   
   console.log('[Render] Showing items', start, 'to', end, '/', products.length);
 
-paginatedItems.forEach((product, index) => {
-  const card = document.createElement('div');
-  card.className = 'product-card';
-  card.style.animationDelay = `${index * 50}ms`;
-
-  const img = document.createElement('img');
-  img.src = product.image || 'placeholder.jpg';
-  img.alt = product.name || 'Product';
-  img.className = 'product-image';
-  img.loading = 'lazy';
-  img.addEventListener('error', () => {
-    img.src = 'https://via.placeholder.com/300x300?text=No+Image';
+  paginatedItems.forEach((product, index) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.style.animationDelay = `${index * 50}ms`;
+    
+    const productName = product.name || 'Unnamed Product';
+    const productPrice = product.price || 'N/A';
+    const productDesc = product.description || 'No description available';
+    const productRating = product.rating || 'N/A';
+    const productStock = product.stock || 'N/A';
+    
+    let statusText = 'Out of stock';
+    if (product.available) {
+      statusText = 'Available';
+    } else if (product.available_soon && product.estimated_days_to_availability) {
+      statusText = `Available in ${product.estimated_days_to_availability} days`;
+    }
+    
+    card.innerHTML = `
+      <img src="${product.image || 'https://via.placeholder.com/300x300?text=No+Image'}" 
+           alt="${productName}" 
+           class="product-image" 
+           loading="lazy" 
+           onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'" />
+      <h2>${productName}</h2>
+      <p><strong>Price:</strong> Rs ${productPrice} /-</p>
+      <p>${productDesc}</p>
+      <p><strong>Rating:</strong> ${productRating} / 5</p>
+      <p><strong>Stock:</strong> ${productStock}</p>
+      <p><strong>Status:</strong> ${statusText}</p>
+    `;
+    list.appendChild(card);
   });
-
-  card.appendChild(img);
-  card.insertAdjacentHTML('beforeend', `
-    <h2>${product.name || 'Unnamed Product'}</h2>
-    <p><strong>Price:</strong> Rs ${product.price || 'N/A'} /-</p>
-    <p>${product.description || 'No description available'}</p>
-    <p><strong>Rating:</strong> ${product.rating || 'N/A'} / 5</p>
-    <p><strong>Stock:</strong> ${product.stock || 'N/A'}</p>
-    <p><strong>Status:</strong> ${
-      product.available
-        ? 'Available'
-        : product.available_soon
-          ? `Available in ${product.estimated_days_to_availability} days`
-          : 'Out of stock'
-    }</p>
-  `);
-
-  list.appendChild(card);
-});
-
 
   console.log('[Render] Added', paginatedItems.length, 'cards to DOM');
   renderPaginationControls(page, totalPages);
 }
 
 function searchProducts(data, query) {
-  const lower = query.toLowerCase();
-  return data.filter(item =>
-    (item.name || '').toLowerCase().includes(lower) ||
-    (item.description || '').toLowerCase().includes(lower) ||
-    (item.tags || []).some(tag => tag.toLowerCase().includes(lower))
-  );
+  if (!query || query.trim() === '') {
+    return data;
+  }
+  
+  const lower = query.toLowerCase().trim();
+  return data.filter(item => {
+    const name = (item.name || '').toLowerCase();
+    const description = (item.description || '').toLowerCase();
+    const tags = item.tags || [];
+    
+    return name.includes(lower) ||
+           description.includes(lower) ||
+           (Array.isArray(tags) && tags.some(tag => 
+             typeof tag === 'string' && tag.toLowerCase().includes(lower)
+           ));
+  });
 }
 
 // Initialize - wait for DOM to be ready
@@ -401,9 +445,15 @@ function initApp() {
   });
 }
 
-// Register service worker
+// Register service worker with better error handling
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
-    .then(() => console.log('[SW] Registered'))
-    .catch(err => console.warn('[SW] Registration failed:', err));
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('[SW] Registered with scope:', registration.scope);
+      })
+      .catch(err => {
+        console.warn('[SW] Registration failed:', err.message);
+      });
+  });
 }
