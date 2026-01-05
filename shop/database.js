@@ -322,22 +322,39 @@ function renderProducts(products, page = 1) {
   
   console.log('[Render] Showing items', start, 'to', end, '/', products.length);
 
-  paginatedItems.forEach((product, index) => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.style.animationDelay = `${index * 50}ms`;
-    card.innerHTML = `
-      <img src="${product.image || 'placeholder.jpg'}" alt="${product.name || 'Product'}" class="product-image" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'" />
-      <h2>${product.name || 'Unnamed Product'}</h2>
-      <p><strong>Price:</strong> Rs ${product.price || 'N/A'} /-</p>
-      <p>${product.description || 'No description available'}</p>
-      <p><strong>Rating:</strong> ${product.rating || 'N/A'} / 5</p>
-      <p><strong>Stock:</strong> ${product.stock || 'N/A'}</p>
-      <p><strong>Status:</strong> ${product.available ? 'Available' : product.available_soon ? 
-        `Available in ${product.estimated_days_to_availability} days` : 'Out of stock'}</p>
-    `;
-    list.appendChild(card);
+paginatedItems.forEach((product, index) => {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.style.animationDelay = `${index * 50}ms`;
+
+  const img = document.createElement('img');
+  img.src = product.image || 'placeholder.jpg';
+  img.alt = product.name || 'Product';
+  img.className = 'product-image';
+  img.loading = 'lazy';
+  img.addEventListener('error', () => {
+    img.src = 'https://via.placeholder.com/300x300?text=No+Image';
   });
+
+  card.appendChild(img);
+  card.insertAdjacentHTML('beforeend', `
+    <h2>${product.name || 'Unnamed Product'}</h2>
+    <p><strong>Price:</strong> Rs ${product.price || 'N/A'} /-</p>
+    <p>${product.description || 'No description available'}</p>
+    <p><strong>Rating:</strong> ${product.rating || 'N/A'} / 5</p>
+    <p><strong>Stock:</strong> ${product.stock || 'N/A'}</p>
+    <p><strong>Status:</strong> ${
+      product.available
+        ? 'Available'
+        : product.available_soon
+          ? `Available in ${product.estimated_days_to_availability} days`
+          : 'Out of stock'
+    }</p>
+  `);
+
+  list.appendChild(card);
+});
+
 
   console.log('[Render] Added', paginatedItems.length, 'cards to DOM');
   renderPaginationControls(page, totalPages);
