@@ -356,6 +356,8 @@ function renderProducts(products, page = 1) {
   
   console.log('[Render] Showing items', start, 'to', end, '/', products.length);
 
+  const FALLBACK_IMAGE = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22300%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2224%22 text-anchor=%22middle%22 x=%22150%22 y=%22160%22%3ENo Image%3C/text%3E%3C/svg%3E';
+  
   paginatedItems.forEach((product, index) => {
     const card = document.createElement('div');
     card.className = 'product-card';
@@ -375,11 +377,11 @@ function renderProducts(products, page = 1) {
     }
     
     card.innerHTML = `
-      <img src="${product.image || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22300%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2224%22 text-anchor=%22middle%22 x=%22150%22 y=%22160%22%3ENo Image%3C/text%3E%3C/svg%3E'}" 
+      <img src="${product.image || FALLBACK_IMAGE}" 
            alt="${productName}" 
            class="product-image" 
            loading="lazy" 
-           onerror="if(this.src.indexOf('data:image')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22300%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2224%22 text-anchor=%22middle%22 x=%22150%22 y=%22160%22%3ENo Image%3C/text%3E%3C/svg%3E';this.onerror=null;}" />
+           data-fallback="${FALLBACK_IMAGE}" />
       <h2>${productName}</h2>
       <p><strong>Price:</strong> Rs ${productPrice} /-</p>
       <p>${productDesc}</p>
@@ -387,6 +389,18 @@ function renderProducts(products, page = 1) {
       <p><strong>Stock:</strong> ${productStock}</p>
       <p><strong>Status:</strong> ${statusText}</p>
     `;
+    
+    // Attach error handler via JavaScript (CSP-compliant)
+    const img = card.querySelector('img');
+    if (img) {
+      img.addEventListener('error', function handleImageError() {
+        if (this.src.indexOf('data:image') === -1) {
+          this.src = this.dataset.fallback;
+          this.removeEventListener('error', handleImageError);
+        }
+      });
+    }
+    
     list.appendChild(card);
   });
 
