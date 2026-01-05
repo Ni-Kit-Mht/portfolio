@@ -393,12 +393,14 @@ function renderProducts(products, page = 1) {
     // Attach error handler via JavaScript (CSP-compliant)
     const img = card.querySelector('img');
     if (img) {
-      img.addEventListener('error', function handleImageError() {
+      img.addEventListener('error', function handleImageError(e) {
+        // Only switch to fallback if we're not already showing it
         if (this.src.indexOf('data:image') === -1) {
+          console.warn('[Image] Failed to load:', this.src, '- Status:', e.type);
           this.src = this.dataset.fallback;
           this.removeEventListener('error', handleImageError);
         }
-      });
+      }, { once: true }); // Automatically removes after first execution
     }
     
     list.appendChild(card);
