@@ -95,7 +95,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Student Accessories</strong>
-            <p>Clear Bag (cheap to expensive), Certificate bag (display file), Refill, Ink pot, Bullet ink packets, Lead-pencil lead, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, ID card holders</p>
+            <p>Clear Bag (cheap to expensive), Certificate bag (display file), Refill, Ink pot, Bullet ink packets, Lead-pencil lead, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, ID card holders, Dictionary</p>
           </div>
           <div class="category-box">
             <strong>Office Supplies</strong>
@@ -138,7 +138,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Project materials</strong>
-            <p>9V battery, fan, motor, LEDs, batter and motor connection wire, glue gun (small, bigger), glue sticks (thin, thick), Lazer light, Magnets, Cut and Paste, Pendrive (4GB,8GB,16GB)</p>
+            <p>9V battery, fan, motor, LEDs, batter and motor connection wire, glue gun (small, bigger), glue sticks (thin, thick), Lazer light, Magnets, Cut and Paste, Pendrive (4GB,8GB,16GB), Multiplug</p>
           </div>
           <div class="category-box">
             <strong>Music and Instruments, Fitness</strong>
