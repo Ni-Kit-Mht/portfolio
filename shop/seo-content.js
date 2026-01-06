@@ -121,7 +121,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Wearing Accessories</strong>
-            <p>Finger gloves, Gloves, Earphones, Finger Rings, Necklace, Keychains, Hair Rubber bands, Hair clips, Face Masks (Kids, Adults)</p>
+            <p>Finger gloves, Gloves, Earphones, Finger Rings, Necklace, Keychains, Hair Rubber bands, Hair clips, Face Masks (Kids, Adults), Shoe Polish (liquid, semi-solid)</p>
           </div>
           
           <div class="category-box">
