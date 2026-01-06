@@ -91,7 +91,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Classroom items</strong>
-            <p>Eraser, Sharpner, Scientific Calculator (multi-functions), Eraser-sharpner (combined), White boards (various sizes), Study Tables, Duster, Protactor, Scale (metal, rubber, transparent Ruler), Compass, Stick file, Sticky notes</p>
+            <p>Eraser, Sharpner, Scientific Calculator (multi-functions), Eraser-sharpner (combined), White boards (various sizes), Study Tables, Duster, Protactor, Scale (metal, rubber, transparent Ruler), Compass, Stick file, Sticky notes, Divider, Marker ink</p>
           </div>
           <div class="category-box">
             <strong>Student Accessories</strong>
@@ -99,7 +99,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Office Supplies</strong>
-            <p>Stamp Pad, Files (Record, 2 ring, display), folders, office trays, staplers and pins, clips (paper, plastic), pins (thumb, push), carbon paper, papers (a4, a3), bill pads (single, double), ledger, day book, attendance book, cash book, stock book, registers</p>
+            <p>Stamp Pad, Files (Record, 2 ring, display, index), folders, office trays, staplers and pins, clips (paper, plastic), pins (thumb, push), carbon paper, papers (a4, a3), bill pads (single, double), ledger, day book, attendance book, cash book, stock book, registers, Stamp pad ink</p>
           </div>
           <div class="category-box">
             <strong>Art Supplies</strong>
@@ -160,7 +160,7 @@ class SEOContent extends HTMLElement {
           
           <div class="category-box">
             <strong>Handy Items (Avaliable upon request)</strong>
-            <p>Measuring Tape, Gun Thread, Bundles of Rubber bands, Ball of Rubber bands (Chungi), Marbles, Birthday items and accessories, Flying Kite, kite threads, kite roller</p>
+            <p>Measuring Tape, Gun Thread, Bundles of Rubber bands, Ball of Rubber bands (Chungi), Marbles, Birthday items and accessories, Flying Kite, kite threads, kite roller, Weighting Machine</p>
           </div>
 
         </div>
