@@ -87,7 +87,7 @@ class SEOContent extends HTMLElement {
         <div class="product-categories">
           <div class="category-box">
             <strong>Writing Instruments</strong>
-            <p>Pens (magic, ink, bullet, gel, ball, pilot, roller), pencils (lead, pen, normal, magic, engineering drawing), markers, highlighters, brush pen, sign pen, Tipex</p>
+            <p>Pens (magic, ink, bullet, gel, ball, pilot, roller, multi-color), pencils (lead, pen, normal, magic, engineering drawing), markers, highlighters, brush pen, sign pen, Tipex</p>
           </div>
           <div class="category-box">
             <strong>Classroom items</strong>
@@ -95,7 +95,7 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Student Accessories</strong>
-            <p>Clear Bag (cheap to expensive), Certificate bag (display file), Refill, Ink pot, Bullet ink packets, Lead-pencil lead, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, ID card holders, Dictionary</p>
+            <p>Clear Bag (cheap to expensive), Certificate bag (display file), Refill, Ink pot, Bullet ink packets, Lead-pencil lead, Ribbons, Hair clips, School tops (Black, White), Key ring, Stickers, ID card holders, Pocket Dictionary, Zoom Lens</p>
           </div>
           <div class="category-box">
             <strong>Office Supplies</strong>
@@ -112,12 +112,12 @@ class SEOContent extends HTMLElement {
           </div>
           <div class="category-box">
             <strong>Household and Store Accessories</strong>
-            <p>Wall Hanger hooks, fevikwik, super glue, soap, shampoo, perfume, lotion, room freshner, comb, tooth brush, shoe brush, water bottles, battery, ear buds, umbrella, fiber bags, Normal Calculator</p>
+            <p>Wall Hanger hooks, fevikwik, super glue, soap, shampoo, perfume, lotion, room freshner, comb, tooth brush, shoe brush, water bottles, battery (multiple types), ear buds, umbrella, fiber bags, Normal Calculator</p>
           </div>
         
           <div class="category-box">
             <strong>Extra Accessories</strong>
-            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Paper cutter blades, Keys and Locks, Tissue Paper, Toilet Paper</p>
+            <p>Khada (Ceremonial Scarf), Hankerchief, Hankey, Black Tape, Cartoon Tape, Binding Tape, Cello Tape (Water Tape), Paper Tape (Masking Tape), tape like Price Tags, Nano Tape, Double Tape, Wrapping Paper, Bouquet paper, Paper cutter blades, Keys and Locks, Tissue Paper, Toilet Paper, Nail cutter</p>
           </div>
           <div class="category-box">
             <strong>Wearing Accessories</strong>
@@ -209,7 +209,7 @@ class SEOContent extends HTMLElement {
           <em>
             Looking for stationery in Nepal? A.N. Stationery offers notebooks, pens, office supplies, school materials, 
             art supplies, and more. Shop quality stationery products online in Lalitpur, Nepal. Best prices on 
-            writing instruments, paper products, and office equipment.
+            writing instruments, paper products, office equipment and more.
           </em>
         </p>
       </div>
