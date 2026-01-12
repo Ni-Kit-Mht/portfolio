@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.N. Stationery's blogs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://nikitmehta.com.np/favicon.ico">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-area">
+                <h1 class="site-title">A.N. Stationery's Blog Hub</h1>
+                <p class="site-description">Thoughts, tutorials, and insights on various topics</p>
+            </div>
+            <div class="header-info">
+                <p class="site-url">nikitmehta.com.np/blogs</p>
+                <div class="social-links">
+                    <a href="#" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Share on Facebook"><i class="fab fa-facebook"></i></a>
+<a href="https://medium.com/@anstationery1" 
+   title="Subscribe on Medium"
+   aria-label="Subscribe on Medium"
+   target="_blank"
+   rel="noopener noreferrer">
+  <i class="fab fa-medium"></i>
+</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="intro-section">
+                <div class="intro-text">
+                    <h2>Welcome to My Blog Collection</h2>
+                    <p>This is the central hub for all my articles, tutorials, and thoughts on various subjects. Browse through the collection below, or use the search and filter options to find specific content.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-blogs">15</span>
+                        <span class="stat-label">Blog Posts</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-categories">5</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Updated</span>
+                        <span class="stat-label">Regularly</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="controls-section">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search blog posts by title or keyword...">
+                </div>
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="category-filter">Filter by Category:</label>
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="stationery">Stationery</option>
+                            <option value="writing">Writing</option>
+                            <option value="office">Office Products</option>
+                            <option value="technology">Technology</option>
+                            <option value="lifestyle">Lifestyle</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort-filter">Sort by:</label>
+                        <select id="sort-filter">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="title-asc">Title (A-Z)</option>
+                            <option value="title-desc">Title (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blogs-section">
+                <h2 class="section-title">All Blog Posts</h2>
+                <div id="blogs-container" class="blogs-grid">
+                    <!-- Blog posts will be dynamically generated here -->
+                </div>
+                <div class="no-results" id="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No Blog Posts Found</h3>
+                    <p>Try adjusting your search or filter to find what you're looking for.</p>
+                </div>
+            </section>
+
+            <section class="featured-section">
+                <h2 class="section-title">Recently Updated</h2>
+                <div class="featured-blog">
+                    <div class="featured-content">
+                        <span class="featured-badge">Latest</span>
+                        <h3 class="featured-title">The Art of Penmanship in the Digital Age</h3>
+                        <p class="featured-excerpt">Exploring why handwriting still matters and how quality stationery can enhance your writing experience, creativity, and mindfulness in our increasingly digital world.</p>
+                        <div class="featured-meta">
+                            <span class="category-tag category-writing">Writing</span>
+                            <span class="date">Updated: June 10, 2023</span>
+                        </div>
+                        <a href="blogs/stationery_writing_products.html" class="read-featured-btn">Read This Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="featured-image">
+                        <img src="https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Writing with a fountain pen">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>A.N. Stationery's Blog Hub</h3>
+                    <p>A collection of articles and thoughts on stationery, writing, technology, and lifestyle topics.</p>
+                    <p class="footer-url">nikitmehta.com.np/blogs</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://nikitmehta.com.np">Homepage</a></li>
+                        <li><a href="https://nikitmehta.com.np/about">About Me</a></li>
+                        <li><a href="https://nikitmehta.com.np/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul class="category-list">
+                        <li><a href="#" data-category="stationery">Stationery</a></li>
+                        <li><a href="#" data-category="writing">Writing</a></li>
+                        <li><a href="#" data-category="office">Office Products</a></li>
+                        <li><a href="#" data-category="technology">Technology</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Nikit Mehta. All rights reserved.</p>
+                <p>This page serves as an index for all blog posts at nikitmehta.com.np/blogs</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

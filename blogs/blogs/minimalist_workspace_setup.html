@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Minimalist Workspace: Less Clutter, More Focus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #fafafa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            color: #7f8c8d;
+            font-size: 0.95em;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        article {
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .lead {
+            font-size: 1.25em;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            padding-left: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin: 50px 0 25px 0;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.6em;
+            margin: 35px 0 20px 0;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #34495e;
+        }
+
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .principle-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 3px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .principle-card h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .principle-card p {
+            font-size: 1em;
+            color: #7f8c8d;
+            margin: 0;
+        }
+
+        .essentials-list {
+            background: #ecf0f1;
+            padding: 35px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .essentials-list h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05em;
+            color: #34495e;
+        }
+
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 50px 0;
+            text-align: center;
+            font-size: 1.3em;
+            font-style: italic;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 5em;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 35px 0;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table thead {
+            background: #34495e;
+            color: white;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .benefit-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #27ae60;
+        }
+
+        .benefit-box h4 {
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .warning-box h4 {
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .step-by-step {
+            counter-reset: step;
+            margin: 30px 0;
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .step h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin: 30px 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-section h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #95a5a6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            article {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .principle-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                padding-left: 60px;
+            }
+
+            .step::before {
+                width: 30px;
+                height: 30px;
+                font-size: 1em;
+                left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Minimalist Workspace</h1>
+        <p>Less Clutter, More Focus, Better Work</p>
+    </header>
+
+    <div class="container">
+        <div class="meta-info">
+            <div class="meta-item">
+                <span>📅</span>
+                <span>January 12, 2026</span>
+            </div>
+            <div class="meta-item">
+                <span>⏱️</span>
+                <span>10 min read</span>
+            </div>
+            <div class="meta-item">
+                <span>✍️</span>
+                <span>Workspace Design</span>
+            </div>
+        </div>
+
+        <article>
+            <p class="lead">
+                In a world of constant digital noise and physical clutter, the minimalist workspace has emerged as more than just an aesthetic choice—it's a productivity philosophy. By intentionally reducing distractions and keeping only what serves your work, you create an environment that promotes focus, creativity, and mental clarity.
+            </p>
+
+            <p>The rise of remote work and hybrid schedules has made our personal workspaces more important than ever. Your desk is no longer just a place to occasionally work from home—it's your daily command center, creative studio, and thinking space. The way you design this environment directly impacts your productivity, mental health, and work satisfaction.</p>
+
+            <p>This guide will walk you through creating a minimalist workspace that enhances rather than hinders your work. We'll explore the core principles, essential items, common pitfalls, and practical steps to transform your cluttered desk into a focused productivity haven.</p>
+
+            <h2>The Philosophy of Minimalism at Work</h2>
+
+            <p>Minimalism isn't about deprivation or having the fewest possible items. It's about intentionality—keeping only what adds value and removing what doesn't. In a workspace context, this means every item should either serve a functional purpose or bring you genuine joy and inspiration.</p>
+
+            <p>The benefits extend far beyond aesthetics. A minimalist workspace reduces decision fatigue, decreases visual stress, makes cleaning and organizing easier, and helps you focus on what actually matters: your work. When your environment is simple and organized, your mind can be too.</p>
+
+            <div class="principle-grid">
+                <div class="principle-card">
+                    <h4>🎯 Functionality First</h4>
+                    <p>Every item must serve a clear purpose. If you haven't used something in a month, it probably doesn't belong on your desk.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>🧘 Visual Calm</h4>
+                    <p>Reduce visual noise by limiting colors, patterns, and decorative items. Your eyes should rest, not constantly scan.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>✨ Quality Over Quantity</h4>
+                    <p>Invest in fewer, better items. One excellent pen beats a cup full of mediocre ones.</p>
+                </div>
+                <div class="principle-card">
+                    <h4>🔄 Regular Curation</h4>
+                    <p>Minimalism is ongoing. Regularly assess what stays and what goes as your needs evolve.</p>
+                </div>
+            </div>
+
+            <h2>The Essential Minimalist Workspace Items</h2>
+
+            <p>While needs vary by profession and personal preference, most minimalist workspaces share a core set of essential items. Here's what you actually need for focused, productive work.</p>
+
+            <div class="essentials-list">
+                <h4>The Core Setup</h4>
+                <ul>
+                    <li><strong>Desk:</strong> Clean surface with enough space for your laptop and one active project. Simple design, neutral color.</li>
+                    <li><strong>Chair:</strong> Ergonomic and comfortable for long sessions. Adjustable height. Simple aesthetic that matches your space.</li>
+                    <li><strong>Computer/Laptop:</strong> Your primary work tool. Consider a laptop stand for better posture if using an external keyboard.</li>
+                    <li><strong>Monitor (if needed):</strong> Single external display for those who need extra screen real estate. Mounted or on a simple stand.</li>
+                    <li><strong>Keyboard & Mouse:</strong> Wireless options reduce cable clutter. Choose quality over features.</li>
+                    <li><strong>Desk Lamp:</strong> Good lighting is non-negotiable. Adjustable arm, neutral light temperature, minimal design.</li>
+                    <li><strong>Notebook & Pen:</strong> For quick notes and analog thinking. One high-quality notebook and one reliable pen.</li>
+                    <li><strong>Headphones:</strong> For focus music or calls. Stored in a dedicated spot when not in use.</li>
+                    <li><strong>Water Bottle:</strong> Stay hydrated without multiple cups cluttering your space.</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ The "Just in Case" Trap</h4>
+                <p>Resist keeping items "just in case" you might need them. If you haven't used something in your workspace for a month, move it to storage or eliminate it entirely. The mental clarity from a clear desk outweighs the minor inconvenience of occasionally retrieving something from storage.</p>
+            </div>
+
+            <h2>What to Remove from Your Desk</h2>
+
+            <p>Knowing what to remove is as important as knowing what to keep. These common desk items often create more clutter than value in a minimalist workspace.</p>
+
+            <h3>Excessive Stationery</h3>
+
+            <p>That cup full of pens, the sticky notes in five colors, the highlighters you never use—these multiply without us noticing. Keep one excellent pen, one pencil, and perhaps one highlighter. Store the rest elsewhere or donate them.</p>
+
+            <h3>Decorative Clutter</h3>
+
+            <p>Figurines, motivational posters, excessive photos, and trinkets create visual noise. If an item doesn't make you genuinely happy or inspire your work, it's just clutter. One or two meaningful items are powerful; twenty are overwhelming.</p>
+
+            <h3>Old Papers and Documents</h3>
+
+            <p>Bills, receipts, old notebooks, random printouts—paper accumulates rapidly. Digitize important documents, file what you need to keep physically, and recycle the rest. Your desk should only hold active projects.</p>
+
+            <h3>Excessive Tech Accessories</h3>
+
+            <p>Multiple chargers, old cables, unused adapters, and gadgets you bought but never use. Keep only what you actively use daily. Store or donate the rest.</p>
+
+            <h3>Food and Drink Items</h3>
+
+            <p>Half-empty coffee cups, snack wrappers, and condiment packets create mess and attract pests. Use one water bottle or mug. Take breaks to eat away from your workspace.</p>
+
+            <div class="image-placeholder">
+                📸 Before & After Workspace Transformation
+            </div>
+
+            <h2>Step-by-Step Setup Guide</h2>
+
+            <p>Ready to create your minimalist workspace? Follow these steps to transform your desk into a focused productivity environment.</p>
+
+            <div class="step-by-step">
+                <div class="step">
+                    <h4>Clear Everything</h4>
+                    <p>Remove every item from your desk and surrounding area. This gives you a fresh start and forces you to consciously choose what returns.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Clean Thoroughly</h4>
+                    <p>Wipe down all surfaces. Dust your monitor, keyboard, and accessories. Starting with a physically clean space sets the tone for maintaining it.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Sort Items into Categories</h4>
+                    <p>Essential daily items, occasional use items, and things to eliminate or store elsewhere. Be honest about what you actually use regularly.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Return Only Essentials</h4>
+                    <p>Place your computer, monitor, keyboard, mouse, and lamp back on the desk. Add your notebook and pen. That's your foundation.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Organize Cables</h4>
+                    <p>Use cable management solutions to hide and organize wires. Visible cable mess undermines the entire minimalist aesthetic.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Create Storage Systems</h4>
+                    <p>Use desk drawers or a simple organizer for items you need but don't use daily. Everything should have a designated home.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Add One Personal Touch</h4>
+                    <p>If desired, add one meaningful item—a plant, photo, or small object that inspires you without creating clutter.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Establish Maintenance Habits</h4>
+                    <p>End each work day with a two-minute reset: clear papers, put away items, and wipe the surface. Maintaining is easier than recreating.</p>
+                </div>
+            </div>
+
+            <h2>Digital Minimalism for Your Workspace</h2>
+
+            <p>Physical minimalism is only half the equation. Your digital workspace deserves the same intentional curation as your physical desk.</p>
+
+            <h3>Desktop Organization</h3>
+
+            <p>A cluttered computer desktop is as distracting as a cluttered physical desk. Keep your desktop empty or with minimal icons. Use folders strategically. Consider using a neutral wallpaper that doesn't compete for attention.</p>
+
+            <h3>Browser Tab Management</h3>
+
+            <p>Close tabs you're not actively using. Consider using a tab manager or the bookmark bar for pages you need to keep. The mental load of seeing 30+ open tabs adds unnecessary stress.</p>
+
+            <h3>Notification Discipline</h3>
+
+            <p>Turn off non-essential notifications. Constant pings fragment your attention and break flow states. Check messages on your schedule, not theirs.</p>
+
+            <h3>App and Software Audit</h3>
+
+            <p>Uninstall programs you don't use. Keep only essential applications. Every piece of software represents potential distraction and maintenance overhead.</p>
+
+            <div class="benefit-box">
+                <h4>✅ Benefits of Digital Minimalism</h4>
+                <p>Faster computer performance, reduced decision fatigue, improved focus, less context switching, and decreased anxiety from information overload. Your digital environment affects your mental state just as much as your physical space.</p>
+            </div>
+
+            <h2>Maintaining Your Minimalist Workspace</h2>
+
+            <p>Creating a minimalist workspace is one thing—maintaining it is another. These habits help keep your space clean and focused over time.</p>
+
+            <h3>The Two-Minute Rule</h3>
+
+            <p>If organizing or putting something away takes less than two minutes, do it immediately. This prevents small messes from accumulating into major cleaning projects.</p>
+
+            <h3>One In, One Out</h3>
+
+            <p>When you add a new item to your workspace, remove something else. This maintains balance and prevents gradual accumulation of stuff.</p>
+
+            <h3>Weekly Reviews</h3>
+
+            <p>Spend five minutes each week assessing your workspace. Has anything accumulated that shouldn't be there? Are there items you haven't used? Regular micro-decluttering prevents major overhauls.</p>
+
+            <h3>Monthly Deep Clean</h3>
+
+            <p>Once a month, repeat the complete clearing process. Remove everything, clean thoroughly, and thoughtfully return items. This catches drift and keeps your space optimized.</p>
+
+            <div class="quote-box">
+                "Clutter is not just physical stuff. It's old ideas, toxic relationships, and bad habits. Clutter is anything that does not support your better self."
+            </div>
+
+            <h2>Common Mistakes to Avoid</h2>
+
+            <p>Even with the best intentions, people often make these mistakes when creating minimalist workspaces.</p>
+
+            <h3>Confusing Minimalism with Deprivation</h3>
+
+            <p>Minimalism isn't about having as few things as possible—it's about having the right things. If you need three monitors for your work, that's fine. The goal is intentionality, not arbitrary limits.</p>
+
+            <h3>Going Too Fast</h3>
+
+            <p>Drastically eliminating everything at once can lead to regret and buying things back. Transition gradually. Test living without items before permanently removing them.</p>
+
+            <h3>Ignoring Ergonomics</h3>
+
+            <p>Don't sacrifice comfort and health for aesthetics. Your chair, desk height, monitor position, and lighting matter more than any visual principle. Function enables focus.</p>
+
+            <h3>Not Accommodating Your Work Style</h3>
+
+            <p>Some people think visually and need whiteboards or pinboards. Others work on multiple projects simultaneously and need space for that. Adapt minimalism to serve your actual work patterns, not an idealized image.</p>
+
+            <h3>Forgetting Storage Solutions</h3>
+
+            <p>Items you need but don't use daily still need homes. Invest in simple, hidden storage so your space can be minimal without losing functionality.</p>
+
+            <h2>Color and Material Choices</h2>
+
+            <p>The colors and materials in your workspace significantly impact its feel and your focus.</p>
+
+            <h3>Neutral Color Palette</h3>
+
+            <p>Whites, grays, blacks, and wood tones create calm, non-distracting environments. These colors don't demand attention, allowing you to focus on your work. You can add one accent color if desired, but keep it subtle and intentional.</p>
+
+            <h3>Natural Materials</h3>
+
+            <p>Wood, metal, and natural fabrics age beautifully and feel substantial. They're also easier to maintain than complex synthetic materials. Natural elements like wood can also add warmth to otherwise stark spaces.</p>
+
+            <h3>Consistent Aesthetic</h3>
+
+            <p>Choose items that share a design language. If your desk is modern and clean-lined, don't add ornate vintage accessories. Visual consistency reduces cognitive load.</p>
+
+            <h2>Budget-Friendly Minimalist Setup</h2>
+
+            <p>Creating a minimalist workspace doesn't require expensive designer furniture. Here's how to do it affordably.</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Budget Option</th>
+                        <th>Investment Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Desk</td>
+                        <td>Simple table from IKEA ($50-100)</td>
+                        <td>Solid wood desk ($300-800)</td>
+                    </tr>
+                    <tr>
+                        <td>Chair</td>
+                        <td>Basic ergonomic chair ($100-200)</td>
+                        <td>Herman Miller or Steelcase ($400-1000)</td>
+                    </tr>
+                    <tr>
+                        <td>Lighting</td>
+                        <td>LED desk lamp ($20-50)</td>
+                        <td>Architect lamp ($100-300)</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>Repurposed boxes or basic organizers ($10-30)</td>
+                        <td>Custom storage solutions ($100-300)</td>
+                    </tr>
+                    <tr>
+                        <td>Accessories</td>
+                        <td>Thrifted or repurposed items ($0-50)</td>
+                        <td>Designer desk accessories ($100-500)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Remember: minimalism often means spending less overall because you're buying fewer items. Invest in what you use daily (chair, keyboard, monitor), save on decorative elements.</p>
+
+            <h2>The Psychology of Minimalist Workspaces</h2>
+
+            <p>Understanding why minimalism works helps you maintain it long-term.</p>
+
+            <h3>Reduced Decision Fatigue</h3>
+
+            <p>Every object in your visual field requires a tiny bit of mental processing. Fewer objects means more cognitive resources available for actual work. This is why cluttered desks feel exhausting even when you're not actively looking at them.</p>
+
+            <h3>Enhanced Focus</h3>
+
+            <p>A clean workspace creates a clean mental state. Without visual distractions competing for attention, you can enter and maintain flow states more easily. Your environment literally shapes your mental environment.</p>
+
+            <h3>Sense of Control</h3>
+
+            <p>An organized, minimal workspace provides psychological control in an often chaotic work life. This sense of order reduces stress and increases confidence in tackling complex tasks.</p>
+
+            <h3>Identity and Intention</h3>
+
+            <p>Your workspace reflects and reinforces your professional identity. A thoughtfully curated minimalist setup signals—both to yourself and others—that you take your work seriously and value focus over distraction.</p>
+
+            <div class="cta-section">
+                <h3>Start Your Minimalist Journey Today</h3>
+                <p>Transform your workspace, transform your work. The clarity and focus that comes from a minimalist environment might be exactly what you need to reach the next level.</p>
+                <a href="#" class="cta-button">Download the Setup Checklist</a>
+            </div>
+
+            <h2>Conclusion</h2>
+
+            <p>Creating a minimalist workspace is fundamentally about making a choice: choosing focus over distraction, intention over accumulation, and quality over quantity. It's not about aesthetic perfection or Instagram-worthy photos—it's about creating an environment that genuinely supports your best work.</p>
+
+            <p>The process takes time and experimentation. What works for someone else might not work for you, and that's fine. The principles remain constant—functionality, visual calm, quality, and regular curation—but the specific implementation should match your work style, profession, and personality.</p>
+
+            <p>Start small. Clear one area of your desk today. Remove items that don't serve you. Notice how that small change affects your focus and mental clarity. Then build from there, iterating and refining until your workspace feels like the focused, calm environment you need.</p>
+
+            <p>Your workspace is where you spend a significant portion of your life. Make it count. Make it intentional. Make it minimal.</p>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Minimalist Workspace Guide. All rights reserved.</p>
+        <p>Created with intention, designed for focus.</p>
+    </footer>
+</body>
+</html>
