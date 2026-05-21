@@ -140,7 +140,15 @@ document.addEventListener('DOMContentLoaded', function() {
             date: "February 5, 2023",
             image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
             url: "blogs/calligraphy_for_beginners.html"
-        }
+        },
+        {
+    "id": 16,
+    "title": "Unlock Financial Freedom: The Best Ways to Earn Money Online in 2026",
+    "category": "advertisement",
+    "date": "May 22, 2026",
+    "image": "https://images.pexels.com/photos/4391492/pexels-photo-4391492.jpeg?auto=compress&cs=tinysrgb&w=600&q=80",
+    "url": "blogs/paidwork_article.html"
+}
     ];
     
     // Initialize counts
