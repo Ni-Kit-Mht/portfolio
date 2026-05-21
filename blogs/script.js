@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
     "id": 16,
     "title": "Unlock Financial Freedom: The Best Ways to Earn Money Online in 2026",
-    "category": "advertisement",
+    "category": "technology",
     "date": "May 22, 2026",
     "image": "https://images.pexels.com/photos/4391492/pexels-photo-4391492.jpeg?auto=compress&cs=tinysrgb&w=600&q=80",
     "url": "blogs/paidwork_article.html"
